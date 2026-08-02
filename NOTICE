@@ -1,0 +1,59 @@
+# Third-party notices
+
+This skill bundles third-party code. Their licences are reproduced below in full, as
+those licences require.
+
+---
+
+## logo-designer-skill
+
+`skill/scripts/export.sh` is derived from the logo-designer-skill project and **has been
+modified**. The changes are listed in the file's own header; in summary:
+
+1. Fixed an aspect-ratio inconsistency — the `sharp` path scaled to a square canvas while
+   the other four converters scaled by width, so non-square logos exported differently
+   depending on which tool happened to be installed.
+2. Added a guard rejecting SVGs that still contain live `<text>`.
+3. Added a monochrome export.
+4. Made the "no converter found" install hints platform-aware.
+
+Source: https://github.com/neonwatty/logo-designer-skill
+
+The SVG generation approach described in `skill/references/logo-generation.md` is also
+adapted from that project. Its interview phase was deliberately not adopted; the
+reasoning is recorded in that file.
+
+```
+MIT License
+
+Copyright (c) 2026 Jeremy Watt
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+```
+
+---
+
+## Reference material
+
+`design-guidelines-examples/` holds published brand guidelines by Coca-Cola, Discord, and
+Saudi Founding Day. They are third-party copyrighted works kept for study only. They are
+**not** redistributed as part of this skill and must be excluded from any package.
+
+Brand logos shown in `skill/assets/photos/` are trademarks of their respective owners,
+reproduced as illustrative examples of logo types.

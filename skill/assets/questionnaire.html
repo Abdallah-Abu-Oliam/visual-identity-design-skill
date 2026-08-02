@@ -1,0 +1,386 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Brand Questionnaire</title>
+<style>
+  :root{
+    --bg:#faf9f7; --surface:#fff; --line:#e3e0da; --ink:#1c1a17; --muted:#6d675e;
+    --accent:#c2410c; --accent-soft:#fdf0e8; --draft:#b45309; --ok:#15803d;
+    --radius:10px; --max:820px;
+  }
+  @media (prefers-color-scheme:dark){
+    :root{ --bg:#16150f; --surface:#1e1d17; --line:#33312a; --ink:#f0ede6; --muted:#a39d92;
+           --accent:#fb923c; --accent-soft:#2a1d12; --draft:#fbbf24; --ok:#4ade80; }
+  }
+  :root[data-theme="dark"]{
+    --bg:#16150f; --surface:#1e1d17; --line:#33312a; --ink:#f0ede6; --muted:#a39d92;
+    --accent:#fb923c; --accent-soft:#2a1d12; --draft:#fbbf24; --ok:#4ade80;
+  }
+  :root[data-theme="light"]{
+    --bg:#faf9f7; --surface:#fff; --line:#e3e0da; --ink:#1c1a17; --muted:#6d675e;
+    --accent:#c2410c; --accent-soft:#fdf0e8; --draft:#b45309; --ok:#15803d;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font:16px/1.6 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  }
+  html[dir="rtl"] body{ font-family:"Noto Naskh Arabic","Segoe UI",Tahoma,ui-sans-serif,sans-serif; line-height:1.9 }
+  .wrap{max-width:var(--max); margin:0 auto; padding:0 20px 120px}
+
+  header{
+    position:sticky; top:0; z-index:10; background:var(--bg);
+    border-bottom:1px solid var(--line); padding:14px 0 10px;
+  }
+  .hrow{display:flex; align-items:center; gap:12px; flex-wrap:wrap}
+  h1{font-size:19px; margin:0; letter-spacing:-.01em; flex:1; min-width:170px}
+  h1 small{display:block; font-weight:400; color:var(--muted); font-size:13px; letter-spacing:0}
+  .btn{
+    background:var(--surface); color:var(--ink); border:1px solid var(--line);
+    border-radius:7px; padding:6px 11px; font:inherit; font-size:13px; cursor:pointer; white-space:nowrap;
+  }
+  .btn:hover{border-color:var(--accent); color:var(--accent)}
+  .btn.warn{border-color:var(--draft); color:var(--draft); font-weight:600}
+  .bar{height:3px; background:var(--line); border-radius:3px; margin-top:10px; overflow:hidden}
+  .bar i{display:block; height:100%; width:0; background:var(--accent); transition:width .25s}
+  .count{font-size:12px; color:var(--muted); font-variant-numeric:tabular-nums; white-space:nowrap}
+
+  nav{display:flex; gap:6px; flex-wrap:wrap; margin-top:12px}
+  nav a{font-size:12px; text-decoration:none; color:var(--muted); border:1px solid var(--line); padding:4px 9px; border-radius:20px}
+  nav a:hover{color:var(--accent); border-color:var(--accent)}
+
+  section{margin:44px 0 0}
+  .shead{border-bottom:2px solid var(--ink); padding-bottom:7px}
+  .shead h2{font-size:15px; margin:0; text-transform:uppercase; letter-spacing:.09em}
+  html[dir="rtl"] .shead h2{text-transform:none; letter-spacing:0; font-size:17px}
+  .snote{color:var(--muted); font-size:13.5px; margin:10px 0 26px}
+
+  .q{margin:0 0 30px}
+  .q>label,.qlabel{display:block; font-weight:600; margin-bottom:3px; font-size:15px}
+  .hint{color:var(--muted); font-size:13px; margin:0 0 9px}
+  textarea,input[type=text]{
+    width:100%; background:var(--surface); color:var(--ink); border:1px solid var(--line);
+    border-radius:var(--radius); padding:11px 13px; font:inherit; resize:vertical;
+  }
+  textarea{min-height:78px}
+  textarea:focus,input[type=text]:focus{outline:2px solid var(--accent); outline-offset:-1px; border-color:transparent}
+  [data-drafted="1"]{border-left:3px solid var(--draft); background:var(--accent-soft)}
+  html[dir="rtl"] [data-drafted="1"]{border-left:1px solid var(--line); border-right:3px solid var(--draft)}
+  .draftflag{display:none; font-size:11.5px; color:var(--draft); margin-top:5px; font-weight:600; letter-spacing:.03em}
+  [data-drafted="1"] ~ .draftflag{display:block}
+
+  .axis{margin:0 0 22px}
+  .axends{display:flex; justify-content:space-between; font-size:13.5px; margin-bottom:3px}
+  .axends b{font-weight:600}
+  input[type=range]{width:100%; accent-color:var(--accent); margin:0}
+  html[dir="rtl"] input[type=range]{direction:ltr}
+  .axval{text-align:center; font-size:12px; color:var(--muted); margin-top:1px}
+
+  .refimg{width:100%; border:1px solid var(--line); border-radius:var(--radius); background:#fff; display:block; margin:4px 0 6px}
+  .imgnote{font-size:12px; color:var(--draft); margin:0 0 14px; font-weight:600}
+
+  .types{display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:9px; margin-top:6px}
+  .type{border:1px solid var(--line); border-radius:var(--radius); padding:11px 9px; cursor:pointer; background:var(--surface); text-align:center}
+  .type:hover{border-color:var(--accent)}
+  .type.on{border-color:var(--accent); border-width:2px; padding:10px 8px; background:var(--accent-soft)}
+  .type .tn{font-weight:600; font-size:13.5px}
+  .type .tx{font-size:11.5px; color:var(--muted); margin-top:2px}
+  .limit{font-size:12.5px; color:var(--muted); margin-top:9px}
+  .limit.over{color:var(--draft); font-weight:600}
+
+  .foot{position:fixed; left:0; right:0; bottom:0; background:var(--surface); border-top:1px solid var(--line); padding:9px 20px; font-size:12.5px; color:var(--muted)}
+  .foot .in{max-width:var(--max); margin:0 auto; display:flex; gap:14px; align-items:center}
+  .saved{color:var(--ok); font-weight:600}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div class="hrow">
+    <h1><span data-i18n="title">Brand Questionnaire</span><small data-i18n="sub">Answers here drive every visual decision later.</small></h1>
+    <span class="count"><span id="done">0</span> / <span id="total">0</span></span>
+    <button class="btn" id="lang">العربية</button>
+    <button class="btn" id="theme" data-i18n="theme">Theme</button>
+  </div>
+  <div class="bar"><i id="prog"></i></div>
+  <nav>
+    <a href="#s1" data-i18n="n1">1 · Strategy</a><a href="#s2" data-i18n="n2">2 · Look &amp; Feel</a>
+    <a href="#s3" data-i18n="n3">3 · Tone</a><a href="#s4" data-i18n="n4">4 · Value</a>
+    <a href="#s5" data-i18n="n5">5 · Photography</a><a href="#s6" data-i18n="n6">6 · Visual Identity</a>
+  </nav>
+</header>
+
+<p class="snote" style="margin-top:20px" data-i18n="intro">Fields with an orange edge were drafted from your brief — they are guesses. Correct them; that is faster than writing from nothing. Anything you skip stays open, and nothing here blocks the work. Everything saves automatically as you type.</p>
+
+<section id="s1">
+  <div class="shead"><h2 data-i18n="s1h">1 · Brand Strategy — values, vision, story</h2></div>
+  <p class="snote" data-i18n="s1n">Why the brand exists and where it is going. This is the source every visual decision traces back to.</p>
+
+  <div class="q"><label data-i18n="q_values">What are your beliefs and values?</label><p class="hint" data-i18n="h_values">What you actually hold to — not what sounds good on a wall.</p><textarea data-q="values"></textarea><span class="draftflag" data-i18n="df">DRAFTED FROM YOUR BRIEF — EDIT</span></div>
+  <div class="q"><label data-i18n="q_purpose">Why do you do what you do?</label><p class="hint" data-i18n="h_purpose">The reason the company exists, ideally in one sentence.</p><textarea data-q="purpose"></textarea><span class="draftflag" data-i18n="df">DRAFTED FROM YOUR BRIEF — EDIT</span></div>
+  <div class="q"><label data-i18n="q_against">What do you stand against?</label><p class="hint" data-i18n="h_against">Often the sharpest answer in the document. What you refuse rules out whole visual territories.</p><textarea data-q="against"></textarea><span class="draftflag" data-i18n="df">DRAFTED FROM YOUR BRIEF — EDIT</span></div>
+  <div class="q"><label data-i18n="q_team">Why does your team enjoy working with you?</label><textarea data-q="team"></textarea><span class="draftflag" data-i18n="df">DRAFTED FROM YOUR BRIEF — EDIT</span></div>
+  <div class="q"><label data-i18n="q_whybuy">Why do customers buy from you?</label><textarea data-q="whybuy"></textarea><span class="draftflag" data-i18n="df">DRAFTED FROM YOUR BRIEF — EDIT</span></div>
+  <div class="q"><label data-i18n="q_whystay">Why do they stay?</label><textarea data-q="whystay"></textarea><span class="draftflag" data-i18n="df">DRAFTED FROM YOUR BRIEF — EDIT</span></div>
+  <div class="q"><label data-i18n="q_vision">What do you want to achieve in the next 5–10 years?</label><textarea data-q="vision"></textarea><span class="draftflag" data-i18n="df">DRAFTED FROM YOUR BRIEF — EDIT</span></div>
+  <div class="q"><label data-i18n="q_growth">What are your plans for growth and expansion?</label><p class="hint" data-i18n="h_growth">Retail, digital, partnerships — each one adds a surface the identity has to survive on.</p><textarea data-q="growth"></textarea><span class="draftflag" data-i18n="df">DRAFTED FROM YOUR BRIEF — EDIT</span></div>
+  <div class="q"><label data-i18n="q_markets">Will you enter new markets?</label><textarea data-q="markets"></textarea><span class="draftflag" data-i18n="df">DRAFTED FROM YOUR BRIEF — EDIT</span></div>
+  <div class="q"><label data-i18n="q_newproducts">Will you launch new products or services?</label><textarea data-q="newproducts"></textarea><span class="draftflag" data-i18n="df">DRAFTED FROM YOUR BRIEF — EDIT</span></div>
+  <div class="q"><label data-i18n="q_segments">Which customer segments will you focus on most?</label><textarea data-q="segments"></textarea><span class="draftflag" data-i18n="df">DRAFTED FROM YOUR BRIEF — EDIT</span></div>
+  <div class="q"><label data-i18n="q_evolve">How will the company evolve?</label><textarea data-q="evolve"></textarea><span class="draftflag" data-i18n="df">DRAFTED FROM YOUR BRIEF — EDIT</span></div>
+</section>
+
+<section id="s2">
+  <div class="shead"><h2 data-i18n="s2h">2 · Look &amp; Feel</h2></div>
+  <p class="snote" data-i18n="s2n">Drag toward whichever side is truer. The middle is a real answer — but if everything lands in the middle, nothing is decided.</p>
+  <div class="axis"><div class="axends"><b data-i18n="a_trad">Traditional</b><b data-i18n="a_modern">Modern</b></div><input type="range" data-q="ax_tradmodern" data-ax="a_trad|a_modern" min="0" max="100" value="50"><div class="axval"></div></div>
+  <div class="axis"><div class="axends"><b data-i18n="a_simple">Simple</b><b data-i18n="a_complex">Complex</b></div><input type="range" data-q="ax_simplecomplex" data-ax="a_simple|a_complex" min="0" max="100" value="50"><div class="axval"></div></div>
+  <div class="axis"><div class="axends"><b data-i18n="a_fem">Feminine</b><b data-i18n="a_masc">Masculine</b></div><input type="range" data-q="ax_femmasc" data-ax="a_fem|a_masc" min="0" max="100" value="50"><div class="axval"></div></div>
+  <div class="axis"><div class="axends"><b data-i18n="a_mass">Mass-market</b><b data-i18n="a_prem">Premium</b></div><input type="range" data-q="ax_masspremium" data-ax="a_mass|a_prem" min="0" max="100" value="50"><div class="axval"></div></div>
+</section>
+
+<section id="s3">
+  <div class="shead"><h2 data-i18n="s3h">3 · Tone of Voice</h2></div>
+  <p class="snote" data-i18n="s3n">Captured because it drives visual register — calm and measured produces a different palette than loud and playful. This skill does not ship a voice guide.</p>
+  <div class="axis"><div class="axends"><b data-i18n="a_informal">Informal</b><b data-i18n="a_formal">Formal</b></div><input type="range" data-q="ax_informalformal" data-ax="a_informal|a_formal" min="0" max="100" value="50"><div class="axval"></div></div>
+  <div class="axis"><div class="axends"><b data-i18n="a_playful">Playful</b><b data-i18n="a_serious">Serious</b></div><input type="range" data-q="ax_playfulserious" data-ax="a_playful|a_serious" min="0" max="100" value="50"><div class="axval"></div></div>
+  <div class="axis"><div class="axends"><b data-i18n="a_friendly">Friendly</b><b data-i18n="a_distant">Distant</b></div><input type="range" data-q="ax_friendlydistant" data-ax="a_friendly|a_distant" min="0" max="100" value="50"><div class="axval"></div></div>
+  <div class="axis"><div class="axends"><b data-i18n="a_reserved">Reserved</b><b data-i18n="a_bold">Bold</b></div><input type="range" data-q="ax_reservedbold" data-ax="a_reserved|a_bold" min="0" max="100" value="50"><div class="axval"></div></div>
+  <div class="axis"><div class="axends"><b data-i18n="a_indirect">Indirect</b><b data-i18n="a_direct">Direct</b></div><input type="range" data-q="ax_indirectdirect" data-ax="a_indirect|a_direct" min="0" max="100" value="50"><div class="axval"></div></div>
+</section>
+
+<section id="s4">
+  <div class="shead"><h2 data-i18n="s4h">4 · Value Proposition</h2></div>
+  <p class="snote" data-i18n="s4n">One sentence. If it needs two, something is not decided yet.</p>
+  <div class="q"><label data-i18n="q_valueprop">We help [who] to [outcome] through [how].</label><textarea data-q="valueprop"></textarea><span class="draftflag" data-i18n="df">DRAFTED FROM YOUR BRIEF — EDIT</span></div>
+</section>
+
+<section id="s5">
+  <div class="shead"><h2 data-i18n="s5h">5 · Photography</h2></div>
+  <p class="snote" data-i18n="s5n">The most useful section for art direction. Specific beats poetic — "40% men, 40% women, 20% children" can be checked; "authentic and warm" cannot.</p>
+  <div class="q"><label data-i18n="q_ph_style">How would you describe the brand's visual style?</label><textarea data-q="ph_style"></textarea><span class="draftflag" data-i18n="df">DRAFTED FROM YOUR BRIEF — EDIT</span></div>
+  <div class="q"><label data-i18n="q_ph_emotions">What emotions should the images convey?</label><textarea data-q="ph_emotions"></textarea><span class="draftflag" data-i18n="df">DRAFTED FROM YOUR BRIEF — EDIT</span></div>
+  <div class="q"><label data-i18n="q_ph_purpose">Should images promote, educate, or inspire?</label><p class="hint" data-i18n="h_ph_purpose">Rank them if more than one applies.</p><textarea data-q="ph_purpose"></textarea><span class="draftflag" data-i18n="df">DRAFTED FROM YOUR BRIEF — EDIT</span></div>
+  <div class="q"><label data-i18n="q_ph_firstglance">What should a viewer understand at first glance?</label><textarea data-q="ph_firstglance"></textarea><span class="draftflag" data-i18n="df">DRAFTED FROM YOUR BRIEF — EDIT</span></div>
+  <div class="q"><label data-i18n="q_ph_fixedpalette">Is there a fixed colour palette that must appear?</label><textarea data-q="ph_fixedpalette"></textarea><span class="draftflag" data-i18n="df">DRAFTED FROM YOUR BRIEF — EDIT</span></div>
+  <div class="q"><label data-i18n="q_ph_avoidcolours">Are there colours to avoid?</label><p class="hint" data-i18n="h_ph_avoid">Your values may already have ruled some out. If your answer here disagrees with them, we will raise it rather than decide quietly.</p><textarea data-q="ph_avoidcolours"></textarea><span class="draftflag" data-i18n="df">DRAFTED FROM YOUR BRIEF — EDIT</span></div>
+  <div class="q"><label data-i18n="q_ph_people">Do you want people in the images?</label><p class="hint" data-i18n="h_ph_people">Faces, hands only, or none.</p><textarea data-q="ph_people"></textarea><span class="draftflag" data-i18n="df">DRAFTED FROM YOUR BRIEF — EDIT</span></div>
+  <div class="q"><label data-i18n="q_ph_damage">What would damage the brand if it appeared in an image?</label><textarea data-q="ph_damage"></textarea><span class="draftflag" data-i18n="df">DRAFTED FROM YOUR BRIEF — EDIT</span></div>
+  <div class="q"><label data-i18n="q_ph_unacceptable">Examples of images that are not acceptable</label><textarea data-q="ph_unacceptable"></textarea><span class="draftflag" data-i18n="df">DRAFTED FROM YOUR BRIEF — EDIT</span></div>
+  <div class="q"><label data-i18n="q_ph_admired">Brands whose photography you admire</label><p class="hint" data-i18n="h_ph_admired">The single most useful answer for competitive positioning — these define what is already taken.</p><textarea data-q="ph_admired"></textarea><span class="draftflag" data-i18n="df">DRAFTED FROM YOUR BRIEF — EDIT</span></div>
+  <div class="q"><label data-i18n="q_ph_top10">Ten images that would represent the brand</label><textarea data-q="ph_top10" style="min-height:130px"></textarea><span class="draftflag" data-i18n="df">DRAFTED FROM YOUR BRIEF — EDIT</span></div>
+</section>
+
+<section id="s6">
+  <div class="shead"><h2 data-i18n="s6h">6 · Visual Identity</h2></div>
+  <p class="snote" data-i18n="s6n">Questions 7–12 ask for references. Most people cannot answer them before seeing something — leave them blank, the mood board answers them.</p>
+  <div class="q"><label data-i18n="q_vi_language">1 · Primary language</label><p class="hint" data-i18n="h_vi_language">If the brand is bilingual, the wordmark gets designed twice — not translated at the end.</p><input type="text" data-q="vi_language"><span class="draftflag" data-i18n="df">DRAFTED FROM YOUR BRIEF — EDIT</span></div>
+  <div class="q"><label data-i18n="q_vi_spelling">2 · Exact spelling of the name, in each language</label><input type="text" data-q="vi_spelling"><span class="draftflag" data-i18n="df">DRAFTED FROM YOUR BRIEF — EDIT</span></div>
+  <div class="q"><label data-i18n="q_vi_meaning">3 · What does the name mean, and why was it chosen?</label><p class="hint" data-i18n="h_vi_meaning">A name that is already a visual object gives the mark somewhere to start.</p><textarea data-q="vi_meaning"></textarea><span class="draftflag" data-i18n="df">DRAFTED FROM YOUR BRIEF — EDIT</span></div>
+  <div class="q"><label data-i18n="q_vi_concept">4 · What concept should the logo focus on?</label><p class="hint" data-i18n="h_vi_concept">If two metaphors appear here, they will compete. We will resolve it before drawing.</p><textarea data-q="vi_concept"></textarea><span class="draftflag" data-i18n="df">DRAFTED FROM YOUR BRIEF — EDIT</span></div>
+  <div class="q"><label data-i18n="q_vi_slogan">5 · Will the logo carry a slogan? What is it?</label><input type="text" data-q="vi_slogan"><span class="draftflag" data-i18n="df">DRAFTED FROM YOUR BRIEF — EDIT</span></div>
+  <div class="q"><label data-i18n="q_vi_emotion">6 · What emotion should the logo communicate?</label><textarea data-q="vi_emotion"></textarea><span class="draftflag" data-i18n="df">DRAFTED FROM YOUR BRIEF — EDIT</span></div>
+  <div class="q"><label data-i18n="q_vi_likelogos">7 · Logos or identities you like</label><p class="hint" data-i18n="h_optional">Optional. Links or descriptions. Blank is normal.</p><textarea data-q="vi_likelogos"></textarea></div>
+  <div class="q"><label data-i18n="q_vi_likefonts">8 · Typefaces you like</label><textarea data-q="vi_likefonts"></textarea></div>
+  <div class="q"><label data-i18n="q_vi_likecolors">9 · Colours you want</label><textarea data-q="vi_likecolors"></textarea></div>
+  <div class="q"><label data-i18n="q_vi_dislikelogos">10 · Logos you dislike</label><textarea data-q="vi_dislikelogos"></textarea></div>
+  <div class="q"><label data-i18n="q_vi_dislikecolors">11 · Colours you dislike</label><textarea data-q="vi_dislikecolors"></textarea></div>
+  <div class="q"><label data-i18n="q_vi_dislikefonts">12 · Typefaces you dislike</label><textarea data-q="vi_dislikefonts"></textarea></div>
+  <div class="q"><label data-i18n="q_vi_deliverables">13 · What exactly does the identity need to cover?</label><p class="hint" data-i18n="h_vi_deliverables">This list decides what gets built and what gets mocked up. Be precise.</p><textarea data-q="vi_deliverables" style="min-height:120px"></textarea><span class="draftflag" data-i18n="df">DRAFTED FROM YOUR BRIEF — EDIT</span></div>
+
+  <div class="q">
+    <span class="qlabel" data-i18n="q_vi_logotypes">14 · Which logo style do you prefer?</span>
+    <p class="hint" data-i18n="h_vi_logotypes">Pick two. The limit is the point — five checkmarks carry no information. If you genuinely want three, that tells us taste is unresolved and we will follow up on question 7.</p>
+    <img class="refimg" id="typesimg" src="photos/logos in english .png" alt="Logo type examples">
+    <p class="imgnote" id="imgnote"></p>
+    <div class="types" id="types">
+      <div class="type" data-t="lettermark"><div class="tn" data-i18n="t_lettermark">Lettermark</div><div class="tx">IBM · HP</div></div>
+      <div class="type" data-t="pictorial"><div class="tn" data-i18n="t_pictorial">Brand mark</div><div class="tx">Apple · Mercedes</div></div>
+      <div class="type" data-t="wordmark"><div class="tn" data-i18n="t_wordmark">Wordmark</div><div class="tx">Sony · Disney</div></div>
+      <div class="type" data-t="combination"><div class="tn" data-i18n="t_combination">Combination</div><div class="tx">adidas · Xbox</div></div>
+      <div class="type" data-t="mascot"><div class="tn" data-i18n="t_mascot">Mascot / emblem</div><div class="tx">KFC · Starbucks</div></div>
+    </div>
+    <div class="limit" id="limit"></div>
+    <input type="hidden" data-q="vi_logotypes" id="logotypes" value="">
+  </div>
+</section>
+
+</div>
+
+<div class="foot"><div class="in">
+  <span id="status" class="saved" data-i18n="saved">Saved</span>
+  <span style="flex:1"></span>
+  <button class="btn" id="clear" data-i18n="clear">Clear all</button>
+</div></div>
+
+<script>
+const KEY='vi_questionnaire';
+
+const AR={
+ title:"استبيان العلامة التجارية", sub:"الإجابات هنا تقود كل قرار بصري لاحق.", theme:"المظهر",
+ n1:"١ · الاستراتيجية", n2:"٢ · المظهر والإحساس", n3:"٣ · نبرة الصوت", n4:"٤ · القيمة", n5:"٥ · التصوير", n6:"٦ · الهوية البصرية",
+ intro:"الحقول ذات الحافة البرتقالية كُتبت من موجزك — وهي تخمينات. صحّحها؛ فهذا أسرع من الكتابة من فراغ. ما تتركه فارغاً يبقى مفتوحاً، ولا شيء هنا يوقف العمل. كل شيء يُحفظ تلقائياً أثناء الكتابة.",
+ df:"مكتوب من موجزك — عدّله", saved:"تم الحفظ", clear:"مسح الكل",
+ s1h:"١ · استراتيجية العلامة — القيم والرؤية والقصة",
+ s1n:"لماذا توجد العلامة وإلى أين تتجه. هذا هو المصدر الذي يعود إليه كل قرار بصري.",
+ q_values:"ما هي معتقداتكم وقيمكم؟", h_values:"ما تلتزمون به فعلاً — لا ما يبدو جميلاً على الجدار.",
+ q_purpose:"لماذا تفعلون ما تفعلونه؟", h_purpose:"سبب وجود الشركة، ويفضّل في جملة واحدة.",
+ q_against:"ما الذي تقفون ضده؟", h_against:"غالباً أهم إجابة في المستند. ما ترفضونه يستبعد مساحات بصرية كاملة.",
+ q_team:"لماذا يستمتع فريقكم بالعمل معكم؟",
+ q_whybuy:"لماذا يشتري العملاء منكم؟", q_whystay:"ولماذا يبقون؟",
+ q_vision:"ما الذي تريدون تحقيقه خلال ٥ إلى ١٠ سنوات؟",
+ q_growth:"ما خططكم للنمو والتوسع؟", h_growth:"متاجر، منصات رقمية، شراكات — كل واحدة تضيف سطحاً يجب أن تصمد عليه الهوية.",
+ q_markets:"هل ستدخلون أسواقاً جديدة؟", q_newproducts:"هل ستطلقون منتجات أو خدمات جديدة؟",
+ q_segments:"ما شرائح العملاء التي ستركّزون عليها أكثر؟", q_evolve:"كيف ستتطوّر الشركة؟",
+ s2h:"٢ · المظهر والإحساس",
+ s2n:"اسحب نحو الجهة الأصدق. المنتصف إجابة حقيقية — لكن إذا وقع كل شيء في المنتصف فلم يُحسم شيء.",
+ a_trad:"تقليدي", a_modern:"حديث", a_simple:"بسيط", a_complex:"معقّد",
+ a_fem:"أنثوي", a_masc:"ذكوري", a_mass:"جماهيري", a_prem:"راقٍ",
+ s3h:"٣ · نبرة الصوت",
+ s3n:"نلتقطها لأنها تحدّد الطابع البصري — الهدوء والاتزان ينتجان لوحة ألوان مختلفة عن الصخب والمرح. هذه المهارة لا تُنتج دليل صوت.",
+ a_informal:"غير رسمي", a_formal:"رسمي", a_playful:"مرح", a_serious:"جاد",
+ a_friendly:"ودود", a_distant:"متحفّظ", a_reserved:"هادئ", a_bold:"جريء",
+ a_indirect:"غير مباشر", a_direct:"مباشر",
+ s4h:"٤ · القيمة المقدّمة", s4n:"جملة واحدة. إن احتاجت جملتين فهناك شيء لم يُحسم بعد.",
+ q_valueprop:"نساعد [من] على [النتيجة] من خلال [الطريقة].",
+ s5h:"٥ · التصوير",
+ s5n:"أهم قسم للتوجيه الفني. المحدّد يتفوّق على الشاعري — «٤٠٪ رجال، ٤٠٪ نساء، ٢٠٪ أطفال» يمكن التحقق منه، أما «أصيل ودافئ» فلا.",
+ q_ph_style:"كيف تصفون الأسلوب البصري للعلامة؟", q_ph_emotions:"ما المشاعر التي يجب أن تنقلها الصور؟",
+ q_ph_purpose:"هل يجب أن تروّج الصور أم تُعلّم أم تُلهم؟", h_ph_purpose:"رتّبها إن انطبق أكثر من واحد.",
+ q_ph_firstglance:"ما الذي يجب أن يفهمه المشاهد من النظرة الأولى؟",
+ q_ph_fixedpalette:"هل هناك ألوان ثابتة يجب أن تظهر؟",
+ q_ph_avoidcolours:"هل هناك ألوان يجب تجنّبها؟", h_ph_avoid:"قد تكون قيمكم قد استبعدت بعضها أصلاً. إذا تعارضت إجابتك هنا معها فسننبّهك بدل أن نقرّر بصمت.",
+ q_ph_people:"هل تريدون ظهور أشخاص في الصور؟", h_ph_people:"وجوه، أيدٍ فقط، أو لا أحد.",
+ q_ph_damage:"ما الذي قد يضرّ بالعلامة إذا ظهر في صورة؟",
+ q_ph_unacceptable:"أمثلة على صور غير مقبولة",
+ q_ph_admired:"علامات تعجبكم طريقة تصويرها", h_ph_admired:"أنفع إجابة للتموضع التنافسي — هذه تحدّد ما هو محجوز أصلاً.",
+ q_ph_top10:"عشر صور تمثّل العلامة",
+ s6h:"٦ · الهوية البصرية",
+ s6n:"الأسئلة ٧–١٢ تطلب مراجع. معظم الناس لا يستطيعون الإجابة قبل أن يروا شيئاً — اتركها فارغة، فلوحة الإلهام هي التي تجيب عنها.",
+ q_vi_language:"١ · اللغة الأساسية", h_vi_language:"إن كانت العلامة بلغتين، يُصمَّم الشعار النصي مرتين — لا يُترجم في النهاية.",
+ q_vi_spelling:"٢ · طريقة كتابة الاسم بدقة في كل لغة",
+ q_vi_meaning:"٣ · ما معنى الاسم، ولماذا اختير؟", h_vi_meaning:"الاسم الذي هو أصلاً شيء مرئي يمنح الشعار نقطة بداية.",
+ q_vi_concept:"٤ · ما المفهوم الذي يجب أن يركّز عليه الشعار؟", h_vi_concept:"إن ظهر مجازان هنا فسيتنافسان. سنحسم ذلك قبل الرسم.",
+ q_vi_slogan:"٥ · هل سيحمل الشعار عبارة؟ وما هي؟",
+ q_vi_emotion:"٦ · ما الشعور الذي يجب أن ينقله الشعار؟",
+ q_vi_likelogos:"٧ · شعارات أو هويات تعجبكم", h_optional:"اختياري. روابط أو وصف. الفراغ طبيعي.",
+ q_vi_likefonts:"٨ · خطوط تعجبكم", q_vi_likecolors:"٩ · ألوان تريدونها",
+ q_vi_dislikelogos:"١٠ · شعارات لا تعجبكم", q_vi_dislikecolors:"١١ · ألوان لا تعجبكم", q_vi_dislikefonts:"١٢ · خطوط لا تعجبكم",
+ q_vi_deliverables:"١٣ · ما الذي يجب أن تغطيه الهوية بالضبط؟", h_vi_deliverables:"هذه القائمة تحدّد ما سيُبنى وما سيُعرض في النماذج. كن دقيقاً.",
+ q_vi_logotypes:"١٤ · ما نمط الشعار الذي تفضّله؟",
+ h_vi_logotypes:"اختر اثنين. الحد هو المقصد — خمس علامات لا تحمل أي معلومة. إن أردت ثلاثة فعلاً، فهذا يخبرنا أن الذوق لم يُحسم وسنتابع في السؤال ٧.",
+ t_lettermark:"حرفي", t_pictorial:"رمزي", t_wordmark:"نصي", t_combination:"مزيج", t_mascot:"رسومي"
+};
+const EN={};
+document.querySelectorAll('[data-i18n]').forEach(el=>{ if(!(el.dataset.i18n in EN)) EN[el.dataset.i18n]=el.innerHTML; });
+
+let lang='en';
+function setLang(l){
+  lang=l;
+  const dict = l==='ar' ? AR : EN;
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const v = dict[el.dataset.i18n]; if(v!==undefined) el.innerHTML=v;
+  });
+  const h=document.documentElement;
+  h.dir = l==='ar' ? 'rtl' : 'ltr';
+  h.lang = l;
+  document.getElementById('lang').textContent = l==='ar' ? 'English' : 'العربية';
+  document.getElementById('typesimg').src = l==='ar' ? 'photos/logos in arbic.png' : 'photos/logos in english .png';
+  document.getElementById('imgnote').textContent = l==='ar' ? '' :
+    'Note: in this image the bottom two captions are swapped — adidas/Xbox are Combination, KFC/Starbucks are Mascot. The labels below are correct.';
+  localStorage.setItem('vi_lang', l);
+  syncTypes(); refresh();
+}
+
+const fields=()=>[...document.querySelectorAll('[data-q]')];
+function collect(){ const o={}; fields().forEach(el=>{ o[el.dataset.q]= el.type==='checkbox'? el.checked : el.value; }); return o; }
+function prefill(obj, markDrafted){
+  Object.entries(obj||{}).forEach(([k,v])=>{
+    const el=document.querySelector('[data-q="'+k+'"]'); if(!el) return;
+    el.value=v;
+    if(markDrafted && String(v).trim()) el.dataset.drafted='1';
+  });
+  save(); syncTypes(); refresh(); return collect();
+}
+function save(){ try{ localStorage.setItem(KEY, JSON.stringify(collect())); }catch(e){} }
+function load(){ try{ const r=localStorage.getItem(KEY); if(r) prefill(JSON.parse(r), false); }catch(e){} }
+
+function answered(el){ return el.type==='range' ? el.value!=='50' : String(el.value||'').trim()!==''; }
+function refresh(){
+  const f=fields(), n=f.filter(answered).length;
+  document.getElementById('done').textContent=n;
+  document.getElementById('total').textContent=f.length;
+  document.getElementById('prog').style.width=(n/f.length*100)+'%';
+  const dict = lang==='ar' ? AR : EN;
+  document.querySelectorAll('input[type=range][data-ax]').forEach(r=>{
+    const [ka,kb]=r.dataset.ax.split('|'), v=+r.value;
+    const a=dict[ka]||ka, b=dict[kb]||kb;
+    const box=r.parentElement.querySelector('.axval');
+    if(v===50){ box.textContent = lang==='ar' ? 'متوازن' : 'balanced'; }
+    else if(v<50){ box.textContent = lang==='ar' ? `${100-2*v}٪ نحو ${a}` : `${100-2*v}% toward ${a}`; }
+    else { box.textContent = lang==='ar' ? `${2*v-100}٪ نحو ${b}` : `${2*v-100}% toward ${b}`; }
+  });
+}
+function flash(){
+  const s=document.getElementById('status'), dict = lang==='ar'?AR:EN;
+  s.textContent = lang==='ar' ? 'جارٍ الحفظ…' : 'Saving…'; s.style.color='var(--muted)';
+  clearTimeout(window._t); window._t=setTimeout(()=>{ s.textContent=dict.saved||'Saved'; s.style.color='var(--ok)'; },350);
+}
+
+function syncTypes(){
+  const sel=(document.getElementById('logotypes').value||'').split(',').filter(Boolean);
+  document.querySelectorAll('.type').forEach(t=>t.classList.toggle('on', sel.includes(t.dataset.t)));
+  const l=document.getElementById('limit');
+  if(sel.length>2){
+    l.textContent = lang==='ar'
+      ? `اخترت ${sel.length} — أكثر من الحد. هذه إشارة لا خطأ: سنتابع معك في السؤال ٧.`
+      : `${sel.length} selected — over the limit. That is a signal, not an error: we will follow up on question 7.`;
+    l.classList.add('over');
+  } else {
+    l.textContent = lang==='ar' ? `${sel.length} من ٢ محدّد` : `${sel.length} of 2 selected`;
+    l.classList.remove('over');
+  }
+}
+document.querySelectorAll('.type').forEach(t=>{
+  t.addEventListener('click',()=>{
+    const inp=document.getElementById('logotypes');
+    let sel=(inp.value||'').split(',').filter(Boolean);
+    sel = sel.includes(t.dataset.t) ? sel.filter(x=>x!==t.dataset.t) : sel.concat(t.dataset.t);
+    inp.value=sel.join(','); syncTypes(); save(); refresh(); flash();
+  });
+});
+
+document.addEventListener('input',e=>{ if(e.target.dataset && e.target.dataset.q!==undefined){ save(); refresh(); flash(); } });
+
+// two-click clear — confirm() is suppressed in embedded browsers
+let armed=false, armTimer=null;
+document.getElementById('clear').addEventListener('click',function(){
+  const b=this;
+  if(!armed){
+    armed=true; b.classList.add('warn');
+    b.textContent = lang==='ar' ? 'متأكد؟ اضغط مرة أخرى' : 'Sure? Click again';
+    armTimer=setTimeout(()=>{ armed=false; b.classList.remove('warn'); b.textContent=(lang==='ar'?AR:EN).clear||'Clear all'; },4000);
+    return;
+  }
+  clearTimeout(armTimer); armed=false; b.classList.remove('warn');
+  fields().forEach(el=>{ el.value = el.type==='range' ? '50' : ''; delete el.dataset.drafted; });
+  try{ localStorage.removeItem(KEY); }catch(e){}
+  b.textContent=(lang==='ar'?AR:EN).clear||'Clear all';
+  syncTypes(); refresh(); flash();
+});
+
+document.getElementById('theme').addEventListener('click',()=>{
+  const r=document.documentElement;
+  const now=r.dataset.theme || (matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');
+  r.dataset.theme = now==='dark'?'light':'dark';
+});
+document.getElementById('lang').addEventListener('click',()=>setLang(lang==='ar'?'en':'ar'));
+
+load();
+setLang(localStorage.getItem('vi_lang')||'en');
+</script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+# Third-party brand guidelines kept locally for study.
+# Copyrighted works belonging to Coca-Cola, Discord, and Saudi Founding Day.
+# Analysed in skill/references/guidelines-analysis.md; not ours to redistribute.
+design-guidelines-examples/
+
+# Per-project output generated when the skill runs
+brand/
+logos/
+
+# OS and editor noise
+Thumbs.db
+.DS_Store
