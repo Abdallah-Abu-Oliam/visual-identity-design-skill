@@ -1,0 +1,151 @@
+/* ==========================================================================
+   Brand Identity Kit — the only stylesheet.
+
+   Every page links this file and takes colour, type, spacing and radius from
+   its variables. Never hard-code a hex, a font name or a pixel value that a
+   token already carries.
+
+   To rebrand: change the tokens in :root. Nothing else should need editing.
+   ========================================================================== */
+
+:root {
+  /* --- Palette. 60 / 30 / 10 by AREA, not importance. --------------------
+     The 60% is the calmest colour; the 10% is where the eye goes. Palettes
+     fail by making the loudest colour dominant.                            */
+  --color-ink:        #232323;   /* 60% — Charcoal · فحمي   · PMS Black 6 C */
+  --color-paper:      #f5e1cd;   /* 30% — Cream    · كريمي  · PMS 7527 C    */
+  --color-ember:      #e85f1a;   /* 10% — Ember    · جمري   · PMS 1585 C    */
+
+  --color-bg:         #faf7f2;
+  --color-surface:    #ffffff;
+  --color-muted:      #6f6a63;
+  --color-line:       color-mix(in srgb, var(--color-ink) 14%, transparent);
+  --color-line-firm:  color-mix(in srgb, var(--color-ink) 30%, transparent);
+  --color-wrong:      #a32b38;
+  --color-right:      #2f6b4f;
+
+  /* --- Type. Two scripts, drawn separately. ------------------------------
+     Arabic is never a fallback slot on a Latin face — it is its own
+     typographic decision with its own rhythm and baseline behaviour.       */
+  --font-heading:     Georgia, "Source Serif 4", serif;
+  --font-body:        Georgia, "Source Serif 4", serif;
+  --font-heading-ar:  "Noto Naskh Arabic", "Segoe UI", serif;
+  --font-body-ar:     "Noto Naskh Arabic", "Segoe UI", serif;
+  --font-mono:        ui-monospace, "Cascadia Mono", Consolas, monospace;
+
+  --size-display:     clamp(2.4rem, 5vw, 3.6rem);
+  --size-h1:          clamp(1.7rem, 3vw, 2.2rem);
+  --size-h2:          1.3rem;
+  --size-h3:          1.05rem;
+  --size-body:        1rem;
+  --size-small:       0.85rem;
+  --size-caption:     0.75rem;
+
+  --leading-tight:    1.15;
+  --leading-body:     1.65;
+  --leading-arabic:   1.9;   /* Arabic needs more; the same value reads cramped */
+
+  /* --- Spacing, radius, elevation --------------------------------------- */
+  --space-1: 4px;  --space-2: 8px;  --space-3: 12px; --space-4: 16px;
+  --space-5: 24px; --space-6: 32px; --space-7: 48px; --space-8: 64px;
+
+  --radius-sm: 2px; --radius-md: 4px; --radius-lg: 8px;
+
+  --shadow-sm: 0 1px 2px color-mix(in srgb, var(--color-ink) 10%, transparent);
+  --shadow-md: 0 4px 14px color-mix(in srgb, var(--color-ink) 12%, transparent);
+
+  --measure: 68ch;
+  --page:    900px;
+}
+
+/* --- Base ---------------------------------------------------------------- */
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-ink);
+  font: var(--size-body)/var(--leading-body) var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+[dir="rtl"] body,
+[lang="ar"] body { font-family: var(--font-body-ar); line-height: var(--leading-arabic); }
+
+h1, h2, h3 { font-family: var(--font-heading); line-height: var(--leading-tight); margin: 0; font-weight: 600; }
+[dir="rtl"] h1, [dir="rtl"] h2, [dir="rtl"] h3 { font-family: var(--font-heading-ar); }
+
+h1 { font-size: var(--size-h1); }
+h2 { font-size: var(--size-h2); }
+h3 { font-size: var(--size-h3); }
+p  { margin: 0 0 var(--space-4); max-width: var(--measure); }
+
+::selection { background: var(--color-ember); color: #fff; }
+:focus-visible { outline: 2px solid var(--color-ember); outline-offset: 2px; }
+
+/* --- Page furniture ------------------------------------------------------ */
+.page { max-width: var(--page); margin: 0 auto; padding: var(--space-7) var(--space-5) var(--space-8); }
+
+.kicker {
+  font-family: var(--font-mono);
+  font-size: var(--size-caption);
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  margin-bottom: var(--space-2);
+}
+
+.lede { font-size: 1.08rem; color: var(--color-muted); max-width: var(--measure); }
+
+.rule { border: 0; border-top: 2px solid var(--color-ink); margin: var(--space-6) 0 var(--space-5); }
+
+.section { margin-top: var(--space-7); }
+
+/* --- The derivation note -------------------------------------------------
+   Used everywhere a decision needs its reasoning attached. Every visual
+   decision traces back to a strategy decision; this is where that is shown. */
+.why {
+  border-left: 3px solid var(--color-ember);
+  padding: var(--space-2) 0 var(--space-2) var(--space-4);
+  margin: var(--space-4) 0;
+  color: var(--color-muted);
+  font-size: var(--size-small);
+  max-width: var(--measure);
+}
+[dir="rtl"] .why { border-left: 0; border-right: 3px solid var(--color-ember); padding: var(--space-2) var(--space-4) var(--space-2) 0; }
+.why b { color: var(--color-ink); }
+
+/* --- Swatches ------------------------------------------------------------ */
+.swatches { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: var(--space-4); }
+
+.swatch { border: 1px solid var(--color-line); border-radius: var(--radius-md); overflow: hidden; background: var(--color-surface); }
+.swatch .chip { height: 132px; display: flex; align-items: flex-end; padding: var(--space-3); }
+.swatch .share { font-family: var(--font-mono); font-size: var(--size-caption); letter-spacing: .08em; }
+.swatch .meta { padding: var(--space-3) var(--space-4) var(--space-4); }
+.swatch .nm { font-weight: 600; display: flex; justify-content: space-between; gap: var(--space-3); align-items: baseline; }
+.swatch .nm span { font-family: var(--font-body-ar); color: var(--color-muted); font-weight: 400; }
+.swatch dl { display: grid; grid-template-columns: 3.4em 1fr; gap: 2px var(--space-3); margin: var(--space-3) 0 0; font-family: var(--font-mono); font-size: var(--size-caption); }
+.swatch dt { color: var(--color-muted); }
+.swatch dd { margin: 0; }
+
+/* --- Do / Don't ---------------------------------------------------------- */
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: var(--space-4); }
+
+.demo { border: 1px solid var(--color-line); border-radius: var(--radius-md); background: var(--color-surface); padding: var(--space-4); }
+.demo .stage { display: grid; place-items: center; min-height: 132px; }
+.demo figcaption { font-size: var(--size-caption); color: var(--color-muted); margin-top: var(--space-3); display: flex; gap: var(--space-2); align-items: baseline; }
+.demo.no  { border-color: color-mix(in srgb, var(--color-wrong) 40%, transparent); }
+.demo.no  figcaption::before { content: "✗"; color: var(--color-wrong); font-weight: 700; }
+.demo.yes figcaption::before { content: "✓"; color: var(--color-right); font-weight: 700; }
+
+/* --- Specimens ----------------------------------------------------------- */
+.specimen { border-top: 1px solid var(--color-line); padding: var(--space-4) 0; display: grid; grid-template-columns: 8.5rem 1fr; gap: var(--space-4); align-items: baseline; }
+.specimen .label { font-family: var(--font-mono); font-size: var(--size-caption); color: var(--color-muted); line-height: 1.5; }
+.specimen .label b { display: block; color: var(--color-ink); font-family: var(--font-body); font-size: var(--size-small); }
+.ar { font-family: var(--font-heading-ar); direction: rtl; }
+
+/* --- Tables -------------------------------------------------------------- */
+.tbl { width: 100%; border-collapse: collapse; font-size: var(--size-small); }
+.tbl th { text-align: left; font-family: var(--font-mono); font-size: var(--size-caption); text-transform: uppercase; letter-spacing: .1em; color: var(--color-muted); padding: var(--space-2) var(--space-3); border-bottom: 2px solid var(--color-ink); }
+.tbl td { padding: var(--space-3); border-bottom: 1px solid var(--color-line); vertical-align: top; }
+[dir="rtl"] .tbl th { text-align: right; }

@@ -1,0 +1,70 @@
+{
+  "name": "Brand Identity Kit",
+  "purpose": "A reusable structure for delivering a brand's visual identity. Every page reads from styles.css; swap the tokens below and the whole kit re-renders in the new brand.",
+  "demonstrationBrand": {
+    "name": "Jamrah",
+    "nameArabic": "جمرة",
+    "meaning": "An ember",
+    "note": "Demonstration content only. Replace with the brand being delivered."
+  },
+  "bilingual": true,
+  "scripts": ["latin", "arabic"],
+  "color": {
+    "note": "Every swatch carries four codes. PMS is not optional — CMYK drifts between print runs, Pantone does not.",
+    "primary": {
+      "token": "--color-ink",
+      "name": "Charcoal",
+      "nameArabic": "فحمي",
+      "hex": "#232323",
+      "rgb": "35, 35, 35",
+      "cmyk": "71, 65, 64, 68",
+      "pms": "Black 6 C",
+      "share": "60%"
+    },
+    "secondary": {
+      "token": "--color-paper",
+      "name": "Cream",
+      "nameArabic": "كريمي",
+      "hex": "#f5e1cd",
+      "rgb": "245, 225, 205",
+      "cmyk": "0, 8, 16, 4",
+      "pms": "7527 C",
+      "share": "30%"
+    },
+    "accent": {
+      "token": "--color-ember",
+      "name": "Ember",
+      "nameArabic": "جمري",
+      "hex": "#e85f1a",
+      "rgb": "232, 95, 26",
+      "cmyk": "0, 59, 89, 9",
+      "pms": "1585 C",
+      "share": "10%"
+    },
+    "derivation": "The category clustered in blue, green and yellow. Moving up the wheel toward red-orange produced the accent. The palette is the competitor method's output, not a taste call."
+  },
+  "type": {
+    "latin": {
+      "heading": "Georgia, 'Source Serif 4', serif",
+      "body": "Georgia, 'Source Serif 4', serif",
+      "note": "Stands in for a licensed display serif. Replace with the brand's real face and always name a fallback."
+    },
+    "arabic": {
+      "heading": "'Noto Naskh Arabic', 'Segoe UI', serif",
+      "body": "'Noto Naskh Arabic', 'Segoe UI', serif",
+      "note": "Arabic is set separately, never as a fallback slot on a Latin face."
+    },
+    "fallbackRule": "Every typeface names a fallback. Without one the guideline breaks the moment someone opens a document without the licensed font."
+  },
+  "spacing": { "scale": [4, 8, 12, 16, 24, 32, 48, 64], "unit": "px" },
+  "radius": { "sm": "2px", "md": "4px", "lg": "8px" },
+  "logo": {
+    "clearSpaceUnit": "X = the height of the symbol",
+    "minimumSize": {
+      "print": { "full": "16mm", "compact": "9.5mm" },
+      "digital": { "full": "100px", "compact": "53px" }
+    },
+    "monochromeRequired": true,
+    "wordmarkDrawnPerScript": true
+  }
+}
