@@ -31,7 +31,7 @@
   --font-body:        Georgia, "Source Serif 4", serif;
   --font-heading-ar:  "Noto Naskh Arabic", "Segoe UI", serif;
   --font-body-ar:     "Noto Naskh Arabic", "Segoe UI", serif;
-  --font-mono:        ui-monospace, "Cascadia Mono", Consolas, monospace;
+  --font-mono:        ui-monospace, Consolas, monospace;
 
   --size-display:     clamp(2.4rem, 5vw, 3.6rem);
   --size-h1:          clamp(1.7rem, 3vw, 2.2rem);

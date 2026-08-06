@@ -1,0 +1,125 @@
+<!-- @dsCard group="Foundations" name="Colour" subtitle="Six colours, four codes each, forbidden pairings with reasons" viewport="640x900" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Colour</title>
+<link rel="stylesheet" href="../styles.css">
+<style>
+  .ratio { display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:var(--space-2); }
+  .ratio div { padding:var(--space-5) var(--space-4); border:1px solid var(--color-line); }
+  .ratio .n { font-family:var(--font-heading); font-variation-settings:var(--fv-h2);
+              font-weight:600; font-size:1.6rem; letter-spacing:-.02em; }
+  .ratio .l { font-size:var(--size-caption); opacity:.85; margin-top:2px; }
+  .ratio .t { font-size:0.62rem; letter-spacing:.12em; text-transform:uppercase; margin-top:7px; opacity:.7; }
+  .fail { border:2px solid var(--color-terracotta) !important; background:var(--color-apricot); color:var(--color-paper); }
+</style>
+</head>
+<body>
+<main class="page">
+
+<p class="kicker">Foundations · three</p>
+<h1>The name supplied the colour.</h1>
+<p class="lead">The brief demanded warmth. Both obvious warm colours were already occupied — amber by the anti-nuclear campaign, saturated yellow by Orano.</p>
+
+<div class="why">
+  <b>Where the palette came from.</b> A <i>noyau</i> is the stone of a stone fruit, and the
+  fruit has a colour nobody in either category holds. Apricot was then pushed deliberately
+  <b>pinker</b> — <code>#E08A52</code> → <code>#DE8560</code> — purely to widen the measured
+  distance from Réseau Sortir du Nucléaire's amber from 90 to 105. That is differentiation
+  being spent at the moment the primary is decided, which is where it belongs.
+</div>
+
+<div class="grid grid-auto">
+  <div class="swatch" style="background:#FBF5EC;color:#2A211C">
+    <div class="role">60% · base</div><b>Paper</b>
+    <code>HEX #FBF5EC<br>RGB 251, 245, 236<br>CMYK 0, 2, 6, 2<br>PMS substrate</code>
+  </div>
+  <div class="swatch" style="background:#2A211C;color:#FBF5EC">
+    <div class="role">30% · type</div><b>Ink</b>
+    <code>HEX #2A211C<br>RGB 42, 33, 28<br>CMYK 0, 21, 33, 84<br>PMS ≈ Black 7 C</code>
+  </div>
+  <div class="swatch" style="background:#DE8560;color:#2A211C">
+    <div class="role">10% · accent</div><b>Apricot</b>
+    <code>HEX #DE8560<br>RGB 222, 133, 96<br>CMYK 0, 40, 57, 13<br>PMS ≈ 7576 C</code>
+  </div>
+  <div class="swatch" style="background:#EDDCC6;color:#2A211C">
+    <div class="role">surface</div><b>Sand</b>
+    <code>HEX #EDDCC6<br>RGB 237, 220, 198<br>CMYK 0, 7, 16, 7<br>PMS ≈ 7506 C</code>
+  </div>
+  <div class="swatch" style="background:#9C3F26;color:#FBF5EC">
+    <div class="role">interactive</div><b>Terracotta</b>
+    <code>HEX #9C3F26<br>RGB 156, 63, 38<br>CMYK 0, 60, 76, 39<br>PMS ≈ 174 C</code>
+  </div>
+  <div class="swatch" style="background:#4F5C46;color:#FBF5EC">
+    <div class="role">supporting</div><b>Olive</b>
+    <code>HEX #4F5C46<br>RGB 79, 92, 70<br>CMYK 14, 0, 24, 64<br>PMS ≈ 5605 C</code>
+  </div>
+</div>
+
+<div class="no">
+  <b>The PMS column is unverified.</b> Pantone cannot be matched on a screen — the chips are
+  printed ink under controlled light. Take a proof to a physical guide under D50 and pick by
+  eye; whatever the printer picks there replaces these values. They are included rather than
+  omitted because PMS is the code that gets dropped, and then packaging arrives wrong.
+</div>
+
+<h2>Layer order — 60 / 30 / 10 made operational</h2>
+<table>
+  <tr><th>Layer</th><th>Colour</th><th>Rule</th></tr>
+  <tr><td>Background</td><td>Paper, Sand, Ink, Terracotta, Olive</td><td>The calm layer. Occupies the most area.</td></tr>
+  <tr><td>Content</td><td>Ink, or Paper reversed</td><td>All type. Never Apricot.</td></tr>
+  <tr><td>Accent</td><td>Apricot</td><td>The one thing on the page that should be looked at.</td></tr>
+</table>
+<div class="rule"><b>The order cannot be shuffled.</b> Apricot never becomes a background for a whole page, and Ink never becomes an accent. A palette fails most often by making its loudest colour the 60% — exhausting to look at, and it leaves the accent nowhere to go.</div>
+<div class="why">
+  <b>This resolves a conflict recorded in the brief.</b> <i>Safe</i> wants quiet; <i>act with
+  me</i> wants urgency. The resolution was always that <b>the identity stays quiet and the
+  call to action is the only loud thing in it.</b> That is a 60/30/10 statement.
+</div>
+
+<h2>Contrast — computed, not assumed</h2>
+<div class="ratio">
+  <div style="background:#FBF5EC;color:#2A211C"><div class="n">14.54:1</div><div class="l">Ink on Paper</div><div class="t">AAA</div></div>
+  <div style="background:#EDDCC6;color:#2A211C"><div class="n">11.75:1</div><div class="l">Ink on Sand</div><div class="t">AAA</div></div>
+  <div style="background:#4F5C46;color:#FBF5EC"><div class="n">6.56:1</div><div class="l">Paper on Olive</div><div class="t">AA</div></div>
+  <div style="background:#9C3F26;color:#FBF5EC"><div class="n">6.15:1</div><div class="l">Paper on Terracotta</div><div class="t">AA</div></div>
+  <div style="background:#DE8560;color:#2A211C"><div class="n">5.72:1</div><div class="l">Ink on Apricot</div><div class="t">AA</div></div>
+  <div class="fail"><div class="n">2.44:1</div><div class="l">Paper on Apricot</div><div class="t">✗ Fails — never ship</div></div>
+</div>
+
+<h2>Forbidden pairings</h2>
+<table>
+  <tr><th>Pairing</th><th>Why it is banned</th></tr>
+  <tr><td><b>Light text on Apricot</b></td><td>2.44:1. Illegible. On a good monitor the pair looks acceptable, which is exactly how it reaches print. <b>Apricot is a fill and graphic colour, never an interactive one.</b></td></tr>
+  <tr><td><b>Apricot and Olive carrying meaning against each other</b></td><td>They converge to 2.17:1 under protanopia — the same colour to a meaningful share of people. No status coding, no colour-coded categories across that pair.</td></tr>
+  <tr><td><b>Apricot on Sand</b></td><td>Too close in value. Turns to mud, and the accent stops being an accent.</td></tr>
+  <tr><td><b>Ink type on Olive</b></td><td>4.12:1 — passes for large text only, and reads muddy. Use Paper on Olive.</td></tr>
+  <tr><td><b>Any blue, anywhere</b></td><td>Six of seven childhood-cancer charities lead with blue; so do four of five pro-nuclear bodies. It is the most crowded hue in both categories this brand sits between.</td></tr>
+</table>
+
+<h2>Colour blindness</h2>
+<div class="why">
+  <b>This changed the palette.</b> In the first version Apricot and Olive sat at <b>1.22:1
+  under protanopia</b>. Olive was darkened from <code>#79876C</code> to <code>#4F5C46</code>
+  so they separate by <b>value</b>, where colour vision cannot fail.
+</div>
+<table>
+  <tr><th></th><th>Apricot vs Olive</th><th>Apricot vs Paper</th></tr>
+  <tr><td>Protanopia</td><td>2.17:1</td><td>2.93:1</td></tr>
+  <tr><td>Deuteranopia</td><td>2.84:1</td><td>2.37:1</td></tr>
+</table>
+<div class="rule"><b>Colour is never the only signal.</b> Apricot against Paper drops to 2.37:1 under deuteranopia. Anything important must also be marked by position, shape, weight or a label.</div>
+
+<h2>The logo on colour</h2>
+<div class="grid grid-4">
+  <figure><div class="plate small" style="background:var(--color-paper)"><img src="../assets/noyau-ink.svg" alt=""></div><figcaption class="mark-ok">Ink on Paper</figcaption></figure>
+  <figure><div class="plate small" style="background:var(--color-ink)"><img src="../assets/noyau-paper.svg" alt=""></div><figcaption class="mark-ok">Paper on Ink</figcaption></figure>
+  <figure><div class="plate small" style="background:var(--color-terracotta)"><img src="../assets/noyau-paper.svg" alt=""></div><figcaption class="mark-ok">Paper on Terracotta</figcaption></figure>
+  <figure><div class="plate small bad" style="background:var(--color-apricot)"><img src="../assets/noyau-paper.svg" alt=""></div><figcaption class="mark-no">Paper on Apricot</figcaption></figure>
+</div>
+
+</main>
+</body>
+</html>

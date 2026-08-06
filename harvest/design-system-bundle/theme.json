@@ -1,0 +1,92 @@
+{
+  "name": "Noyau",
+  "purpose": "Visual identity for Noyau, a French nonprofit correcting the public belief that nuclear power causes cancer. Every page reads from styles.css; swap the tokens below and the whole book re-renders.",
+  "brand": {
+    "name": "Noyau",
+    "meaning": "The nucleus of an atom · the stone at the centre of a fruit · the core or heart, as in le noyau familial, the family unit",
+    "argument": "The same word names the feared physics and the human warmth. The science people fear is the science that treats their children.",
+    "legalForm": "Association loi 1901",
+    "market": "France, expanding across Europe",
+    "trademark": "NOT CLEARED. Searched only. A trademark attorney is required before registration or print."
+  },
+  "bilingual": false,
+  "scripts": ["latin"],
+  "personality": {
+    "axes": {
+      "traditionalModern": 68,
+      "simpleComplex": 26,
+      "feminineMasculine": 45,
+      "massPremium": 25,
+      "informalFormal": 0,
+      "playfulSerious": 22,
+      "friendlyDistant": 22,
+      "reservedBold": 30,
+      "indirectDirect": 27
+    },
+    "summary": "The brand does not argue. It disarms.",
+    "emotionalCentre": "There is something good here — not you are safe. Hope is an offer; safety is a defensive claim."
+  },
+  "color": {
+    "note": "Four codes per swatch. PMS values are UNVERIFIED starting points — Pantone cannot be matched on a screen. Match from a physical guide under D50 before ordering ink.",
+    "derivation": "The brief demanded warmth and both obvious warm colours were occupied — amber by Réseau Sortir du Nucléaire, saturated yellow #FFE600 by Orano. A noyau is the stone of a stone fruit, and the fruit supplied a hue nobody in either category holds.",
+    "paper":      { "token": "--color-paper",      "name": "Paper",      "hex": "#FBF5EC", "rgb": "251, 245, 236", "cmyk": "0, 2, 6, 2",    "pms": "substrate — use uncoated stock", "share": "60%" },
+    "ink":        { "token": "--color-ink",        "name": "Ink",        "hex": "#2A211C", "rgb": "42, 33, 28",    "cmyk": "0, 21, 33, 84", "pms": "≈ Black 7 C",  "share": "30%" },
+    "apricot":    { "token": "--color-apricot",    "name": "Apricot",    "hex": "#DE8560", "rgb": "222, 133, 96",  "cmyk": "0, 40, 57, 13", "pms": "≈ 7576 C",     "share": "10%" },
+    "sand":       { "token": "--color-sand",       "name": "Sand",       "hex": "#EDDCC6", "rgb": "237, 220, 198", "cmyk": "0, 7, 16, 7",   "pms": "≈ 7506 C",     "role": "secondary surface" },
+    "terracotta": { "token": "--color-terracotta", "name": "Terracotta", "hex": "#9C3F26", "rgb": "156, 63, 38",   "cmyk": "0, 60, 76, 39", "pms": "≈ 174 C",      "role": "interactive — anything carrying light text" },
+    "olive":      { "token": "--color-olive",      "name": "Olive",      "hex": "#4F5C46", "rgb": "79, 92, 70",    "cmyk": "14, 0, 24, 64", "pms": "≈ 5605 C",     "role": "supporting — illustration only" },
+    "forbidden": [
+      { "pair": "Paper on Apricot", "ratio": "2.44:1", "reason": "Fails outright. Light text on apricot is illegible. Use Terracotta for anything carrying light text." },
+      { "pair": "Apricot with Olive as meaning", "ratio": "2.17:1 protanopia", "reason": "They converge under colour blindness. Never encode meaning across that pair." }
+    ],
+    "excludedHues": "No blue anywhere. Six of seven childhood-cancer charities lead with blue; so do four of five pro-nuclear bodies. It is the most crowded hue in both categories."
+  },
+  "type": {
+    "display": {
+      "family": "Fraunces",
+      "stack": "\"Fraunces\", Georgia, \"Times New Roman\", serif",
+      "axes": { "wght": "100–900", "opsz": "9–144", "SOFT": "0–100", "WONK": "0–1" },
+      "licence": "SIL Open Font License",
+      "note": "A serif in a category that is uniformly sans. SOFT and WONK carry the informality — not a decorative script, which five of seven charities already use."
+    },
+    "body": {
+      "family": "Atkinson Hyperlegible Next",
+      "stack": "\"Atkinson Hyperlegible Next\", \"Segoe UI\", system-ui, -apple-system, Helvetica, Arial, sans-serif",
+      "axes": { "wght": "200–800" },
+      "licence": "SIL Open Font License",
+      "note": "Drawn by the Braille Institute for low vision. Derived from the ward legibility floor — this material is read by unwell children, tired parents and clinical staff."
+    },
+    "baseSize": "18px, raised from the usual 16",
+    "measure": "60–70 characters",
+    "printMinimums": { "general": "12pt", "wardAndFamily": "14pt", "captions": "10pt — never smaller" },
+    "fallbackRule": "Fallbacks are the specification, not a footnote. For a volunteer typing a flyer on a ward computer, the fallback is what actually renders.",
+    "subsets": "Both families carry latin-ext — verified. Covers Polish, Czech, Hungarian, Romanian and Nordic diacritics for the Europe plan."
+  },
+  "spacing": { "scale": [4, 8, 12, 16, 24, 32, 48, 64], "unit": "px" },
+  "radius": { "sm": "2px", "md": "4px", "lg": "8px" },
+  "logo": {
+    "description": "A cooling tower with a wheat wreath, blossoming where the plume would be.",
+    "type": "combination mark — symbol detaches",
+    "clearSpaceUnit": "X = the height of the tower, base excluded",
+    "minimumSize": {
+      "print": { "full": "18mm", "reduced": "8mm" },
+      "digital": { "full": "96px", "reduced": "16px" }
+    },
+    "reducedVariant": "Below ~32px use noyau-mark-small.svg — wheat and the two smaller blossoms are dropped, because at 16px they turn to grey fuzz.",
+    "monochromeRequired": true,
+    "singleColour": "The whole mark inherits one `color` attribute. All separations are real negative space, so it works reversed, on colour, on photographs, and in one-colour print, foil, engraving and embroidery.",
+    "wordmarkDrawnPerScript": false
+  },
+  "pattern": {
+    "name": "Le Grain",
+    "meanings": ["the seed", "the surface texture of a material — le grain du papier", "the wheat standing in the mark"],
+    "source": "Route A — the brand's own material. A noyau is a fruit stone; its surface is grooved and pitted.",
+    "construction": "Seamless 400×400 tile. 150 marks, toroidal Poisson sampling, angles from a flow field so the grain runs rather than scatters. 16% round pits.",
+    "registers": { "fine": "~120px", "standard": "~300px", "large": "~700px and up" }
+  },
+  "openItems": [
+    "PMS values are unverified starting points. Match from a physical guide under D50 lighting.",
+    "The public claim needs narrowing: normal operation of nuclear power does not measurably raise cancer risk, while high-dose radiation is carcinogenic — which is why it treats tumours.",
+    "Brand photography does not exist yet and must be commissioned. No free-licence library contains a volunteer sitting with a child in treatment."
+  ]
+}

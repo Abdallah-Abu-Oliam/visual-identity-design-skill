@@ -1,0 +1,101 @@
+<!-- @dsCard group="Logo" name="Misuses" subtitle="Eight wrong versions, each with its reason" viewport="640x820" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Logo — misuses</title>
+<link rel="stylesheet" href="../styles.css">
+<style>
+  .cell { border:1px solid var(--color-line); background:var(--color-surface); }
+  .cell .art { height:150px; display:flex; align-items:center; justify-content:center;
+               overflow:hidden; position:relative; }
+  .cell .art img { width:96px; height:96px; display:block; }
+  .cell .txt { padding:var(--space-3) var(--space-4) var(--space-4);
+               border-top:1px solid var(--color-line); font-size:var(--size-caption); line-height:1.55; }
+  .cell .txt b { display:block; font-size:0.78rem; margin-bottom:3px; }
+  .ok  { outline:2px solid var(--color-right); }
+  .cell.bad::after { top:6px; right:9px; }
+  .sq   { transform: scaleX(1.45); }
+  .rot  { transform: rotate(-14deg); }
+  .shad { filter: drop-shadow(4px 6px 4px rgba(0,0,0,.5)); }
+  .low  { opacity:.30; }
+  .onbusy { background-image:url("../assets/le-grain-ink.svg"); background-size:110px; }
+  .stretchbox { border:3px solid var(--color-terracotta); padding:4px; }
+</style>
+</head>
+<body>
+<main class="page">
+
+<p class="kicker">Logo · two</p>
+<h1>Eight wrong versions.</h1>
+<p class="lead">Shown rather than described, because people copy pictures. Each one carries the reason — a bare prohibition gets broken, a reasoned one survives.</p>
+
+<div class="grid grid-3" style="margin-top:var(--space-6)">
+
+  <figure class="cell ok">
+    <div class="art" style="background:var(--color-paper)"><img src="../assets/noyau-ink.svg" alt="Correct"></div>
+    <div class="txt"><b class="mark-ok">Correct</b>Ink on Paper, full clear space, unaltered proportions.</div>
+  </figure>
+
+  <figure class="cell bad">
+    <div class="art" style="background:var(--color-paper)"><img class="sq" src="../assets/noyau-ink.svg" alt="Stretched"></div>
+    <div class="txt"><b class="mark-no">Never stretch</b>The tower's hyperboloid curve is the thing that identifies it as a cooling tower. Distort the horizontal and it becomes a vase.</div>
+  </figure>
+
+  <figure class="cell bad">
+    <div class="art" style="background:var(--color-paper)"><img class="rot" src="../assets/noyau-ink.svg" alt="Rotated"></div>
+    <div class="txt"><b class="mark-no">Never rotate</b>The mark stands on a base. Tilted, it reads as falling — the opposite of an organisation whose promise is that it stays.</div>
+  </figure>
+
+  <figure class="cell bad">
+    <div class="art" style="background:var(--color-paper)"><img class="shad" src="../assets/noyau-ink.svg" alt="Shadowed"></div>
+    <div class="txt"><b class="mark-no">No shadows or effects</b>No drop shadow, bevel, glow or gradient. The mark is flat by design so it survives one-colour print, embroidery and engraving.</div>
+  </figure>
+
+  <figure class="cell bad">
+    <div class="art" style="background:var(--color-apricot)"><img src="../assets/noyau-paper.svg" alt="Paper on apricot"></div>
+    <div class="txt"><b class="mark-no">Not light on Apricot</b>2.44:1. Fails outright. Apricot is a fill colour; anything carrying light content uses Terracotta.</div>
+  </figure>
+
+  <figure class="cell bad">
+    <div class="art" style="background:#005BFF"><img src="../assets/noyau-paper.svg" alt="On blue"></div>
+    <div class="txt"><b class="mark-no">Never on an off-palette colour</b>This is EDF's electric blue. The one thing the identity must not do is read as the energy industry's press office.</div>
+  </figure>
+
+  <figure class="cell bad">
+    <div class="art onbusy"><img src="../assets/noyau-paper.svg" alt="On pattern"></div>
+    <div class="txt"><b class="mark-no">Never directly on Le Grain</b>The mark needs a solid plate underneath. A pattern behind the wreath destroys the grain separations that were engineered into it.</div>
+  </figure>
+
+  <figure class="cell bad">
+    <div class="art" style="background:var(--color-paper)"><img class="low" src="../assets/noyau-ink.svg" alt="Faded"></div>
+    <div class="txt"><b class="mark-no">Never reduce opacity</b>A faded mark reads as a watermark — a claim of ownership over the page rather than authorship of the message.</div>
+  </figure>
+
+  <figure class="cell bad">
+    <div class="art" style="background:var(--color-paper)"><span class="stretchbox"><img src="../assets/noyau-ink.svg" alt="Boxed" style="width:76px;height:76px"></span></div>
+    <div class="txt"><b class="mark-no">Never box or badge it</b>A wordmark or symbol inside a hard outline is SFEN's mark exactly — the learned society this brand must not be mistaken for.</div>
+  </figure>
+
+</div>
+
+<div class="why" style="margin-top:var(--space-7)">
+  <b>Two of these are not generic don'ts.</b> "Never on electric blue" and "never boxed" come
+  from the competitor audit, not from taste — they name the two specific organisations Noyau
+  is at risk of being confused with. A designer who has never met this brand needs to know
+  that, and would not guess it.
+</div>
+
+<h2>Also prohibited, no picture needed</h2>
+<ul>
+  <li><b class="mark-no">Recolouring individual parts.</b> The mark is single-colour. Apricot blossoms on an ink tower is not a variant, it is a redraw.</li>
+  <li><b class="mark-no">Outlining.</b> No strokes added around the silhouette.</li>
+  <li><b class="mark-no">Re-typesetting the wordmark.</b> "Noyau" beside the symbol is set in Fraunces at the specified variation settings, not in whatever is installed.</li>
+  <li><b class="mark-no">Animating the mark's parts independently.</b> If it moves, it moves as one object.</li>
+  <li><b class="mark-no">Using the full mark below 32px.</b> Use the reduced variant. See Anatomy.</li>
+</ul>
+
+</main>
+</body>
+</html>

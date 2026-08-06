@@ -1,0 +1,128 @@
+<!-- @dsCard group="Logo" name="Anatomy" subtitle="Structure, clear space in X, minimum sizes, ranked colourways" viewport="640x900" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Logo — anatomy</title>
+<link rel="stylesheet" href="../styles.css">
+<style>
+  .clear { position:relative; border:1px solid var(--color-line); padding:0;
+           display:flex; align-items:center; justify-content:center; background:var(--color-surface); }
+  .clear .zone { border:1px dashed var(--color-apricot); padding:80px; }
+  .clear img { width:160px; height:160px; display:block; }
+  .clear .x { position:absolute; font-size:var(--size-caption); color:var(--color-apricot);
+              font-weight:700; letter-spacing:.1em; }
+  .sizes { display:flex; gap:var(--space-6); align-items:flex-end; flex-wrap:wrap;
+           border:1px solid var(--color-line); padding:var(--space-5); background:var(--color-surface); }
+  .sizes figure { text-align:center; }
+  .sizes img { display:block; margin:0 auto var(--space-2); image-rendering:pixelated; }
+  .rank { counter-reset:r; }
+  .rank .plate { position:relative; }
+  .rank .plate::before { counter-increment:r; content:counter(r); position:absolute; top:8px; left:10px;
+                         font-size:var(--size-caption); font-weight:700; color:var(--color-muted); }
+</style>
+</head>
+<body>
+<main class="page">
+
+<p class="kicker">Logo · two</p>
+<h1>A cooling tower, flowering.</h1>
+<p class="lead">The structure people were taught to fear, producing life instead of steam. The mark states the argument before a word is read.</p>
+
+<div class="plate" style="min-height:260px;background:var(--color-surface)">
+  <img src="../assets/noyau-ink.svg" alt="Noyau primary mark" style="width:200px;height:200px">
+</div>
+
+<div class="why">
+  <b>Why the wheat matters structurally, not decoratively.</b> Four earlier concepts failed
+  because a vertically symmetric form sitting on a widened base reads as a <i>chess piece</i>.
+  The wreath reaches sideways and breaks that silhouette. Remove it and the mark becomes a
+  rook again.
+</div>
+
+<h2>Structure</h2>
+<table>
+  <tr><th>Part</th><th>Role</th></tr>
+  <tr><td><b>Tower</b></td><td>The hyperboloid. The recognisable nuclear signifier, and the only part that must survive at every size.</td></tr>
+  <tr><td><b>Blossom</b></td><td>Three flowers and two buds where the plume would be. Life instead of steam.</td></tr>
+  <tr><td><b>Wreath</b></td><td>Six wheat arms, three each side, mirrored. Breaks the vertical silhouette.</td></tr>
+  <tr><td><b>Base</b></td><td>The plinth. Grounds the tower; excluded from the X measurement.</td></tr>
+</table>
+<div class="no"><b>The lockup is never altered.</b> Parts are not separated, rearranged, rescaled relative to each other, or used individually. The only sanctioned variant is the reduced mark below.</div>
+
+<h2>Clear space</h2>
+<div class="clear">
+  <span class="x" style="top:10px;left:12px">X = tower height</span>
+  <div class="zone"><img src="../assets/noyau-ink.svg" alt="Clear space diagram"></div>
+</div>
+<p><b>Minimum clear space on all four sides is 0.5 X</b>, where <b>X is the height of the tower</b> measured from the top of its rim to the underside of the base.</p>
+<div class="why">
+  <b>Why relative, not fixed.</b> Clear space in millimetres breaks at the next size. Derived
+  from the mark itself, it holds from a business card to a festival banner without anyone
+  recalculating.
+</div>
+
+<h2>Minimum size</h2>
+<div class="sizes">
+  <figure><img src="../assets/noyau-ink.svg" width="96" height="96"><figcaption>96px · digital minimum</figcaption></figure>
+  <figure><img src="../assets/mark-32.png" width="32" height="32"><figcaption>32px · reduced</figcaption></figure>
+  <figure><img src="../assets/mark-16.png" width="16" height="16"><figcaption>16px · reduced</figcaption></figure>
+  <figure><img src="../assets/mark-16.png" width="96" height="96"><figcaption>reduced @16 ×6</figcaption></figure>
+  <figure><img src="../assets/mark-full-16.png" width="96" height="96"><figcaption class="mark-no" style="color:var(--color-wrong)">full @16 — fails</figcaption></figure>
+</div>
+<table>
+  <tr><th></th><th>Print</th><th>Digital</th></tr>
+  <tr><td><b>Full mark</b></td><td>18 mm wide</td><td>96 px</td></tr>
+  <tr><td><b>Reduced mark</b></td><td>8 mm wide</td><td>16 px</td></tr>
+</table>
+<div class="rule">
+  <b>Below roughly 32px, switch to the reduced mark</b> (<code>noyau-mark-small.svg</code>).
+  The wheat and the two smaller blossoms are dropped; the tower and one flower carry it.
+</div>
+<div class="why">
+  <b>The last two squares above are the evidence.</b> Both are real rasterised 16px PNGs, not
+  scaled vectors. A browser scales an SVG far more kindly than a favicon renderer does —
+  which is exactly how a mark that dies in the wild passes review.
+</div>
+
+<h2>Colourways, ranked</h2>
+<p>Ranked so an unanticipated background still has an answer: take the highest-ranked colourway that clears contrast against it.</p>
+<div class="grid grid-4 rank">
+  <figure><div class="plate" style="background:var(--color-paper)"><img src="../assets/noyau-ink.svg" alt=""></div><figcaption>Ink on Paper — primary</figcaption></figure>
+  <figure><div class="plate" style="background:var(--color-ink)"><img src="../assets/noyau-paper.svg" alt=""></div><figcaption>Paper on Ink — reversed</figcaption></figure>
+  <figure><div class="plate" style="background:var(--color-terracotta)"><img src="../assets/noyau-paper.svg" alt=""></div><figcaption>Paper on Terracotta</figcaption></figure>
+  <figure><div class="plate" style="background:var(--color-sand)"><img src="../assets/noyau-olive.svg" alt=""></div><figcaption>Olive on Sand — supporting</figcaption></figure>
+</div>
+
+<div class="why">
+  <b>One value recolours the whole mark.</b> The SVG inherits a single <code>color</code>
+  attribute. A colourway is a one-value change, never a redraw — and every separation in the
+  mark is <b>real negative space</b>, computed by boolean subtraction, so the background shows
+  through the gaps. That is what makes reversed, one-colour print, foil, engraving and
+  embroidery all work from the same file.
+</div>
+
+<h2>Positioning</h2>
+<div class="rule"><b class="mark-ok">Top-left, or optically centred.</b> The mark reads as a signature at top-left and as a statement centred. Both are correct.</div>
+<div class="no"><b class="mark-no">Not bottom-right on a layout that ends there.</b> The eye leaves the page at that corner and the mark reads as a footnote rather than as authorship.</div>
+
+<h2>Co-branding</h2>
+<p>Noyau will appear beside hospital, partner and funder marks. Two cases, two rules.</p>
+<table>
+  <tr><th>Case</th><th>Rule</th></tr>
+  <tr><td><b>Partners</b> — hospitals, associations we work alongside</td><td>Noyau sits <b>left</b>, partner marks at <b>equal optical height</b>, separated by a 1 X vertical rule. Equal standing, because the relationship is equal.</td></tr>
+  <tr><td><b>Funders and sponsors</b></td><td>Noyau sits <b>left and 20% larger</b>. Sponsor marks align to Noyau's optical baseline. Multiple sponsors align left-to-right in order of contribution, all at the same size as each other.</td></tr>
+</table>
+<div class="no"><b>Never lock another organisation's mark into the Noyau clear space.</b> The 0.5 X zone is inviolable — a partner mark inside it reads as a sub-brand.</div>
+
+<h2>Registered mark</h2>
+<div class="no">
+  <b>No ® or ™ may be used yet.</b> The name has been searched, not cleared. A trademark
+  attorney must confirm before any symbol is applied, registered or printed. Using ® without
+  registration is a misrepresentation in most jurisdictions.
+</div>
+
+</main>
+</body>
+</html>

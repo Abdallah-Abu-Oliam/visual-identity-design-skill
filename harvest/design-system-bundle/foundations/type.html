@@ -1,0 +1,129 @@
+<!-- @dsCard group="Foundations" name="Typography" subtitle="Two families, the scale, fallbacks, print minimums" viewport="640x900" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Typography</title>
+<link rel="stylesheet" href="../styles.css">
+<style>
+  .d1{font-family:var(--font-heading);font-weight:600;font-size:3.4rem;line-height:1.05;
+      font-variation-settings:"opsz" 144,"SOFT" 45,"WONK" 1;letter-spacing:-.03em}
+  .d2{font-family:var(--font-heading);font-weight:600;font-size:2.45rem;line-height:1.12;
+      font-variation-settings:"opsz" 96,"SOFT" 45;letter-spacing:-.02em}
+  .d3{font-family:var(--font-heading);font-weight:600;font-size:1.72rem;line-height:1.2;
+      font-variation-settings:"opsz" 48,"SOFT" 30}
+  .d4{font-family:var(--font-heading);font-weight:500;font-size:1.4rem;line-height:1.3;
+      font-variation-settings:"opsz" 36,"SOFT" 30}
+  .ld{font-size:1.22rem;line-height:1.5}
+  .bd{font-size:1rem;line-height:1.65}
+  .sm{font-size:.85rem;line-height:1.6}
+  .cp{font-size:.72rem;line-height:1.5;font-weight:500}
+  .axes{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-2)}
+  .axes div{border:1px solid var(--color-line);padding:var(--space-5);text-align:center;background:var(--color-surface)}
+  .axes .s{font-family:var(--font-heading);font-size:2.5rem;font-weight:600;line-height:1;margin-bottom:var(--space-2)}
+  .axes .n{font-size:var(--size-caption);letter-spacing:.11em;text-transform:uppercase;color:var(--color-muted);font-weight:700}
+  .glyphs{border:1px solid var(--color-line);padding:var(--space-5);font-size:1.35rem;line-height:1.85;
+          word-spacing:.2em;background:var(--color-surface)}
+  @media(max-width:720px){.axes{grid-template-columns:1fr}.d1{font-size:2.2rem}}
+</style>
+</head>
+<body>
+<main class="page">
+
+<p class="kicker">Foundations · four</p>
+<h1>A serif, in a category that is entirely sans.</h1>
+<p class="lead">Every pro-nuclear body audited uses a grotesque or geometric sans as its <b>sole</b> typographic class. Open Sans is the workhorse in five of seven childhood-cancer charities.</p>
+
+<div class="why">
+  <b>Why that matters more than taste.</b> A warm serif is the cheapest differentiation
+  available here — and it is a <b>register</b> move, not a hue move, which the research
+  flagged as much harder to take back. Anyone can change a colour in an afternoon.
+</div>
+
+<h2>Fraunces — display</h2>
+<p class="d1">Ce qu'on craint</p>
+<table>
+  <tr><td><b>Stack</b></td><td><code>"Fraunces", Georgia, "Times New Roman", serif</code></td></tr>
+  <tr><td><b>Axes</b></td><td><code>wght</code> 100–900 · <code>opsz</code> 9–144 · <code>SOFT</code> 0–100 · <code>WONK</code> 0–1</td></tr>
+  <tr><td><b>Licence</b></td><td>SIL Open Font License — free, installable by any volunteer</td></tr>
+</table>
+<div class="rule"><b><code>opsz</code> must match the rendered size.</b> Fraunces is drawn differently for display and for text. Ignoring optical size is the most common way this face is used badly.</div>
+
+<h3>The axes are where the personality lives</h3>
+<div class="axes">
+  <div><div class="s" style="font-variation-settings:'opsz' 96,'SOFT' 0,'WONK' 0">Noyau</div><div class="n">SOFT 0 · WONK 0</div></div>
+  <div><div class="s" style="font-variation-settings:'opsz' 96,'SOFT' 50,'WONK' 0">Noyau</div><div class="n">SOFT 50 — warmth</div></div>
+  <div><div class="s" style="font-variation-settings:'opsz' 96,'SOFT' 100,'WONK' 1">Noyau</div><div class="n">SOFT 100 · WONK 1</div></div>
+</div>
+<div class="why">
+  <b>Warmth comes from the axes, not from a script face.</b> Five of seven childhood-cancer
+  charities reserve a handwritten script for exactly one emotional line — Schoolbell,
+  Pacifico, Satisfy. It is the obvious warm move and it is <b>taken</b>. <code>SOFT</code> and
+  <code>WONK</code> do the same job and nobody in either category is using them.
+</div>
+<div class="no"><b>Use WONK sparingly.</b> It is seasoning, not the dish. At display sizes it gives the informality the brief asks for; in running text it becomes a tic.</div>
+
+<h2>Atkinson Hyperlegible Next — body</h2>
+<p class="ld">La même science qui fait peur est celle qui soigne les enfants.</p>
+<table>
+  <tr><td><b>Stack</b></td><td><code>"Atkinson Hyperlegible Next", "Segoe UI", system-ui, -apple-system, Helvetica, Arial, sans-serif</code></td></tr>
+  <tr><td><b>Axes</b></td><td><code>wght</code> 200–800</td></tr>
+  <tr><td><b>Licence</b></td><td>SIL Open Font License</td></tr>
+</table>
+<div class="why">
+  <b>The most directly derived decision in the identity.</b> This face was drawn by the
+  Braille Institute for <b>low vision</b> — letterforms deliberately shaped so characters
+  cannot be confused with one another. The hardest constraint in this brief is that the
+  material is read by unwell children, tired parents and clinical staff in a ward. A typeface
+  exists that was designed for exactly that problem, and it is free. <b>Choosing it is
+  functional and a statement of who this organisation is.</b>
+</div>
+
+<h2>The scale</h2>
+<p>Base is <b>18px, not 16</b> — raised deliberately for the legibility floor.</p>
+<div class="specimen">
+  <div class="row"><div class="meta">Display · 61 / 1.05</div><div class="d1">Ce qu'on craint</div></div>
+  <div class="row"><div class="meta">Headline · 44 / 1.12</div><div class="d2">On reste auprès d'eux</div></div>
+  <div class="row"><div class="meta">Section · 31 / 1.2</div><div class="d3">La science qui soigne</div></div>
+  <div class="row"><div class="meta">Subhead · 25 / 1.3</div><div class="d4">Ce que nous faisons vraiment</div></div>
+  <div class="row"><div class="meta">Lead · 22 / 1.5</div><div class="ld" style="max-width:42ch">La même science, tous les jours, dans les hôpitaux français.</div></div>
+  <div class="row"><div class="meta">Body · 18 / 1.65</div><div class="bd" style="max-width:60ch">Nous ne publions pas de communiqués. Nous venons nous asseoir à côté, et nous restons. Les familles nous connaissent par notre prénom avant de connaître notre argument.</div></div>
+  <div class="row"><div class="meta">Small · 15 / 1.6</div><div class="sm">Association loi 1901. Les dons ouvrent droit à une réduction d'impôt.</div></div>
+  <div class="row"><div class="meta">Caption · 13 / 1.5</div><div class="cp">Photographie prise avec le consentement de la famille.</div></div>
+  <div class="row"><div class="meta">Label · 11 / .14em</div><div class="kicker" style="margin:0">Nous rejoindre</div></div>
+</div>
+<div class="rule"><b>Line-height varies by copy length</b> — 1.65 for running text, tightening to 1.05 at display sizes. <b>Measure stays at 60–70 characters</b>; beyond 75 the eye loses the line return, which matters most for exactly the readers this brand has.</div>
+
+<h2>European coverage</h2>
+<p>Both families carry the <code>latin-ext</code> subset — verified, not assumed. The Europe plan needs it.</p>
+<div class="glyphs" style="font-family:var(--font-heading);font-variation-settings:'opsz' 48,'SOFT' 30">à â ä ç é è ê ë î ï ô œ ù û ü ÿ æ</div>
+<div class="glyphs" style="margin-top:var(--space-2)">ą ć ę ł ń ó ś ź ż · č ď ě ř š ť ů ž · ő ű · ă ș ț · å ø æ · ß</div>
+
+<h2>Fallbacks are the specification</h2>
+<div class="why">
+  <b>Not a footnote.</b> A guideline without fallbacks dies the moment someone opens a
+  document on a machine without the fonts. When a volunteer types a flyer on a ward computer,
+  <b>the fallback is what actually renders.</b> Georgia carries the display because it is
+  warm, widely installed and has a large x-height — it degrades gracefully rather than
+  snapping to something cold.
+</div>
+
+<h2>Print minimums</h2>
+<table>
+  <tr><th>Context</th><th>Minimum body size</th></tr>
+  <tr><td>General print</td><td>12 pt</td></tr>
+  <tr><td><b>Ward, hospital and family-facing material</b></td><td><b>14 pt</b></td></tr>
+  <tr><td>Captions and legal</td><td>10 pt — never smaller</td></tr>
+</table>
+
+<h2>Prohibitions</h2>
+<p class="small muted">Each traces to a measured finding in the activist-register audit, not to taste.</p>
+<div class="no"><b class="mark-no">No all-caps headlines, claims or accusations.</b> Every campaign-register example reserved capitals for its most aggressive lines. Caps are permitted only for the small Label style — one short utilitarian word.</div>
+<div class="no"><b class="mark-no">No ExtraBold as a default.</b> Sortir du Nucléaire runs weight 800 as its body default; Greenpeace's webfont ships no light cut at all. A brand that can only shout has no indoor voice, and this one is an indoor voice.</div>
+<div class="no"><b class="mark-no">No justified text.</b> Ragged right always. Justification opens rivers at narrow measures, which is exactly where this brand's material lives.</div>
+<div class="no"><b class="mark-no">No exclamation marks in display type. No letter-spacing on lowercase body text. No light text on Apricot.</b></div>
+
+</main>
+</body>
+</html>

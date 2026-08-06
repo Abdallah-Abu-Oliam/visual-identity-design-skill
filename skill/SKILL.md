@@ -18,7 +18,73 @@ the brand *is*, then derives how it looks. **The order is enforced.**
 
 ---
 
-## The two rules everything rests on
+## How to talk to the user — read this before anything else
+
+**The user is not reading this file. They must never hear its vocabulary.**
+
+They came to get a brand made. They do not know what a phase is, what a gate is, what a
+reference file is, or what a subagent is. Saying those words does not sound rigorous — it
+sounds like being handed someone else's paperwork.
+
+### Never say
+
+**Phase · Step · gate · hard gate · reference · `references/anything.md` · subagent · fan-out ·
+Read/Review/Research · the skill · the runner · derivation · Q13 · element 7**
+
+Say the thing instead. Not *"Phase 2 Step 5, the hard gate"* — say *"before I design
+anything, I want to agree on the overall look. Nothing else starts until we do."*
+
+### The opening message — send this, near enough verbatim
+
+**Ask for all seven at once, as a list.** The user needs to see the whole shape to answer
+it — they can then write one reply covering everything, in their own order, at their own
+depth. Do not drip the questions out one at a time; these are facts they already have, and
+seven round trips to collect them is a form, not an interview.
+
+No process summary, no cost warning, no explanation of what happens next. Just the ask:
+
+> Tell me about the project. Answer what you can — rough is fine, and skip anything that
+> does not apply.
+>
+> 1. **What is it?** A quick tour — what it does, and what someone actually does with it.
+> 2. **Name** — *optional, skip it if you do not have one yet.*
+> 3. **Why that name?** — *optional.*
+> 4. **Who is it for?** The people who would be genuinely disappointed if it disappeared.
+> 5. **Competitors.** Who someone looks at before choosing you — include the local ones.
+> 6. **Your advantage.** Why they pick you instead. Not what you are good at — what makes
+>    someone switch.
+> 7. **How should it feel?** Someone uses it and it goes well. What do they feel in that
+>    moment?
+
+**Then follow up only on what is missing or too vague to use** — one sharper question per
+gap, not a second pass through the list. If they wrote three sentences covering four items,
+take it and ask about the rest.
+
+**Name and naming reason are genuinely optional.** Plenty of people arrive without a name;
+that is normal, it blocks nothing, and if they want help finding one, just start helping
+rather than announcing a process.
+
+### After the brief, one thing at a time
+
+Batching is right for the brief because those are facts. Everywhere after it — choosing a
+direction, a mark, a palette — present one thing and let them react to it. Those are
+judgements, and judgements do not survive being asked five at once.
+
+### While the work runs
+
+- **Mention cost only when you are about to spend it**, never up front. "This next part
+  means searching and downloading a few hundred images — worth doing?" at the moment it
+  matters. Not as a preamble to someone who has not described their company yet.
+- **Describe what you are doing in plain terms.** *"I'm going to look at what your
+  competitors already own, so we don't land on top of them."*
+- **Show, then ask.** Every choice arrives as something to react to, never as a blank
+  question.
+- **Say why, in their language.** *"Red is out — you told me this brand refuses anything
+  that reads as blood or weapons."* Not *"per the forbidden list in element 7."*
+
+---
+
+## The rules everything rests on
 
 **1 · Every visual decision traces back to a strategy decision.** Blue is not "nice" — it
 is trust, which came from a value, which came from the brief. When presenting any choice,
@@ -50,16 +116,74 @@ as a setback.
 turned down — that usually means the brief missed something, so let us go back to it" is a
 diagnosis. Silently generating a fourth set of boards is not.
 
-These three are not style preferences. They are what separates this from a form with a
+**4 · What the user typed outranks anything you inferred. Always.**
+
+Research findings, competitor analysis, category conventions, your own drafted answers — all
+of it is **inference**. The words the user actually typed are **evidence**. Evidence wins.
+
+**Where they conflict, say so and let the user decide.** Never resolve it silently, and
+never quietly translate their word into your word.
+
+This is the most expensive failure this skill has produced, and it has happened more than
+once:
+
+> The user's questionnaire said **playful, cartoon-like, mascot**, and twice, unprompted,
+> *"they should love it to understand it."* The competitor research said the mark should
+> stay **calm**, because in that category a loud logo is the tell.
+>
+> "Calm" was converted into **"abstract and minimal."** Those are not the same thing — the
+> brand the user themselves named as a reference is calm *and* figurative.
+>
+> **291,000 tokens were spent executing a brief that was wrong before any agent read it.**
+> Then 460,000 more.
+
+The same class of error, elsewhere: a leftover folder on disk outranking the project the
+user named; a rebuilt questionnaire outranking the shipped one.
+
+**Three enforcement points, where it actually costs money:**
+
+- **Drafted questionnaire answers.** A draft you wrote is a guess. **An untouched draft
+  never outranks an explicit edit** — if the user typed over it, their words are final.
+- **Any brief handed to a subagent.** Read it against the user's own words *before*
+  dispatching. A wrong brief costs 1× in the main thread and **N× across N agents** —
+  fan-out multiplies brief errors, so the check belongs before the fan, not after.
+- **Any translation of research into a visual instruction.** "Calm" and "abstract" and
+  "minimal" and "restrained" are different words. If the user used one of them, use theirs.
+  If research suggests another, put both to the user in one sentence.
+
+These four are not style preferences. They are what separates this from a form with a
 design theme.
 
 ---
 
-## Before anything: resume
+## Before anything: whose project is this?
 
-**Read `brand/` first. Always.** This process spans sessions — a user does the brief on
-Monday and looks at boards on Wednesday. Re-asking the seven questions because you did not
-check is the fastest way to lose them.
+**Start by finding out what the user wants to build. Not by reading files.**
+
+If `brand/` exists, **read it but do not adopt it.** Report what you found and confirm it
+is the project they mean, in one sentence, before doing anything else:
+
+> "There is existing work here for **<name>**, at <phase>. Is that what we are continuing,
+> or are you starting something new?"
+
+**Never infer the project from leftover files.** This failed in practice: a fresh session
+found a previous project's `brand/` folder, adopted its brief, its mind map and its
+approved art direction, and dispatched agents to generate logos for **a company the user
+had never mentioned**. The user was never asked what they were building.
+
+Three rules that prevent it:
+
+1. **The user names the project, not the filesystem.** If their opening request names a
+   different brand — or names none — the folder on disk is not authority.
+2. **Confirm before continuing, always.** Even when it looks like an obvious resume. One
+   sentence costs nothing; adopting the wrong brief costs the whole run.
+3. **If it is a different project, do not delete or overwrite.** Ask whether to archive
+   the existing folder or work somewhere else. Someone's unfinished work is not scratch
+   space.
+
+Once confirmed as a genuine resume, `brand/STATE.md` tells you where things stand — this
+process spans sessions, and re-asking the seven questions because you did not check is the
+fastest way to lose someone.
 
 ```
 brand/
@@ -76,30 +200,87 @@ brand/
   STATE.md              what is done, what gate we are at, what is next
 ```
 
-If `brand/STATE.md` exists, read it and say where things stand before doing anything else.
-If not, start at Phase 1. **Write to these files as you go, not at the end** — an
-unrecorded decision is a lost one.
+**Write to these files as you go, not at the end** — an unrecorded decision is a lost one.
+
+**`brand/` belongs to the user's project, never to this skill.** Nothing shipped with the
+skill may live there, and no example brand may be written into it. Demonstration content
+lives in `references/` and `assets/`, clearly labelled as example, and is **never copied
+into a working project as a starting point.** A prior run's output left in place is how a
+fresh session ends up designing for the wrong company.
+
+### Shipped assets are copied, never rebuilt
+
+Everything in `assets/` is finished work. **If an asset exists, use it — do not write your
+own version.** Rebuilding takes longer and produces something worse, because the shipped
+version carries behaviour that is invisible in a description: translations, readback
+functions, persistence, working toggles, embedded images.
+
+| Asset | Copy with |
+|-------|-----------|
+| `assets/questionnaire.html` | **its `photos/` folder** — the picker breaks without it |
+| `assets/preview.css` + `assets/pick.js` | **copy both at Phase 2, before the first page** |
+| `assets/design-system/` | its `styles.css` and `theme.json` |
+
+### Every generated page links `preview.css`. None declares its own CSS.
+
+Copy `assets/preview.css` and `assets/pick.js` into `brand/` at the start of Phase 2, then
+link them from **every** page the process makes — mind map, boards, logo previews, palette,
+type, assembly, pattern, mockups.
+
+```html
+<link rel="stylesheet" href="../preview.css">
+<script src="../pick.js" data-key="art-direction"></script>
+```
+
+On one real run, eleven pages each re-declared the same colour variables, the same `.why`
+block and the same card grid inline — roughly 20–25k tokens of pure duplication, plus the
+cost of re-deciding identical styling eleven times.
+
+**Its tokens are neutral on purpose.** When colour is derived at 3.2, overwrite the six
+`--b-*` values in `brand/preview.css` and **every page built earlier silently re-renders in
+the brand.**
+
+`pick.js` gives every gate the same readback. Mark anything selectable with
+`data-pick="id"`, then read it with one call that is identical on every page:
+
+```js
+Pick.collect()   // -> { key:"art-direction", picked:"seal", at:"…" }
+```
+
+It persists to `localStorage`, and `data-limit` **reports** an overflow rather than
+blocking it — going over a limit is a signal that the choice is unresolved, not a filling
+error.
+
+When an asset references files by relative path, **copy the whole folder, not the one
+file.** Then open it and confirm it works before showing the user. A silently broken asset
+looks exactly like a working one until they click something.
+
+**`assets/design-system/` carries a demonstration brand.** Its palette, name and pattern are
+an example. Replace the tokens before delivering anything — never ship the example brand's
+colours to a real client.
 
 ---
 
 ## Phase 1 — The brief
 
-Seven elements. **Facts the owner already has** — capture, not creative work.
+Seven things. **Facts the owner already has** — capture, not creative work.
 
-Load `references/brief.md` for each element's meaning, processing method, the question
-that actually gets an answer, and the single scripted push-back for its failure mode.
+**Ask for all seven in one message, using the opening message in "How to talk to the user".**
+The user needs the whole list in front of them to answer it. Follow up only on gaps.
 
 1. Quick tour — what it does
-2. Name
-3. Reason for the name
+2. Name — **optional**
+3. Reason for the name — **optional**
 4. Targeted audience
 5. Competitors
 6. Competitive advantages
 7. Targeted feelings
 
-**Ask the questions as written in the reference, not the labels.** "What is your target
-audience?" returns "everyone". "Who would be genuinely disappointed if this disappeared
-tomorrow?" returns actual people.
+Load `references/brief.md` for what each one is *for*, how its answer converts into a
+visual decision, and the single scripted push-back for its failure mode.
+
+**Ask the question, not the label.** "What is your target audience?" returns "everyone".
+"Who would be genuinely disappointed if this disappeared tomorrow?" returns actual people.
 
 **Push back once, then move on.** One sharper follow-up per vague answer. Take what comes
 back. This is a brief, not an interrogation.
@@ -152,10 +333,55 @@ roughly 35 of them. The user corrects rather than composes.
 
 - Template and its rationale: `references/questionnaire-template.md`
 - Worked, annotated example: `references/questionnaire-example-alnisal.md`
-- The form: `assets/questionnaire.html` — **copy it into the project folder** (it must live
-  inside the project or the browser renders it static and no JavaScript runs), open it,
-  call `prefill({...}, true)` to inject drafts, wait, then call `collect()` to read back.
-  It autosaves; it is bilingual with RTL; it never blocks on a blank field.
+
+#### ⛔ NEVER BUILD THE QUESTIONNAIRE. COPY IT.
+
+`assets/questionnaire.html` is a **finished, shipped asset**. It is not a specification to
+implement, not a template to adapt, and not an example to imitate. Writing a new one is
+always wrong.
+
+It already contains 47 fields, full English/Arabic translation with RTL, a working theme
+toggle, sliders that report meaning rather than numbers, the logo-type picker with real
+example images, autosave to `localStorage`, and the `prefill()` / `collect()` pair the
+readback depends on. **A rebuilt version has none of that**, and rebuilding it takes
+minutes to produce something worse.
+
+**Copy the HTML and the `photos/` folder together.** The picker loads its images by
+relative path, so the folder must sit beside the file or the logo examples silently break.
+
+```bash
+mkdir -p brand
+cp "<skill>/assets/questionnaire.html" brand/
+cp -r "<skill>/assets/photos" brand/
+```
+
+It must live **inside the user's project folder** — a file outside it renders as a static
+snapshot with no JavaScript, and nothing works.
+
+**Verify before showing it to the user.** Open it and run:
+
+```js
+JSON.stringify({
+  fields: document.querySelectorAll('[data-q]').length,   // must be 47
+  i18n:   typeof setLang,                                  // must be "function"
+  images: document.getElementById('typesimg')?.getAttribute('src')
+})
+```
+
+Then flip the language once and confirm the questions change. If fields are not 47, or
+`setLang` is undefined, or the picker images are missing — **you are looking at a rebuilt
+copy. Delete it and copy the real one.**
+
+**Symptoms of a rebuilt questionnaire**, all reported from a real run: the language button
+does nothing · the theme button does nothing · the logo-type images do not appear · Clear
+does not clear. Every one means the shipped asset was not used.
+
+#### Using it
+
+Open it, call `prefill({...}, true)` to inject the drafted answers — they render with an
+orange edge marked *drafted from your brief*, so the user never mistakes a guess for their
+own answer — wait, then call `collect()` to read everything back. It autosaves on every
+keystroke and never blocks on a blank field.
 
 **Form for breadth, chat for depth.** Collect everything in the form, then take the two or
 three answers that are vague or contradictory into conversation.
@@ -180,16 +406,38 @@ role, the folder layout, and how to run it with subagents.
 
 The essentials:
 
-- **Behance** is the strongest source and the only one that surfaces finished identity
-  systems. It renders without login. **It never reaches the client** — other designers'
-  copyrighted portfolio work.
-- **Unsplash / Pexels** fill the boards. Free for commercial use.
+- **Never collect from a single source, and match the source to the direction.** On a real
+  run the boards for a direction called *The Seal* were built entirely from Unsplash, which
+  returned modern brass wax stamps with Latin monograms. One call to the Met's open access
+  API returned a **10th–11th century Islamic seal stone carved in Kufic Arabic** — public
+  domain, free, the right century and the right alphabet. A documentary or heritage
+  direction lives in archives; stock alone produces a board about the wrong thing.
+- **Museum and archive open access** — the Met and Wikimedia Commons are both tested and
+  need no key; also Rijksmuseum, Smithsonian, Library of Congress, Europeana. Public
+  domain, high resolution, and **the only place historical material exists**.
+- **Behance** is the strongest source for finished identity systems, and renders without
+  login. **It never reaches the client** — other designers' copyrighted portfolio work.
+- **Unsplash / Pexels / Openverse** fill the boards. Free for commercial use.
 - **Pinterest** renders nothing anonymously. Ask the user to sign in themselves, or have
   them paste pin URLs. **Never type their credentials.**
 - **The named brands' own sites**, via browser screenshot, for first-party category
   conventions.
 - **Search in the market's own language.** A brand in Iraq or the Gulf loses sales to local
   competitors, not the global category leader.
+
+**Build every query as `subject + register + exclusion built in`.** Both halves were
+learned by getting them wrong on a real brief:
+
+- **The forbidden list goes in the query, not on a checklist beside it.** Searching
+  `wax seal` for a brand that forbids red returns red wax. An agent told "avoid red" still
+  types "wax seal" and still gets red. **Name what you want instead of what you don't** —
+  `brass stamp embossed paper`, not `wax seal document`.
+- **Subject alone returns stock.** `date palm frond desert` returns tourism postcards;
+  `palm frond texture macro` returns the same subject in the right world. Put the register
+  in the words: texture, macro, close, detail, monochrome, low light, muted.
+
+**Write the query list before collecting and read it against the forbidden list.** A wrong
+query costs an entire collection run — the most expensive step in the process.
 
 **`FINDINGS.md` is the deliverable.** A folder of screenshots nobody wrote about is dead
 weight.
@@ -281,17 +529,49 @@ must be vector, editable as curves, exactly repeatable.
 **Concepts are presented colourless.** Colour rescues weak forms and flatters bad ones.
 Judge the shape alone or the judgement is worthless.
 
-**Three to five genuinely different concepts**, each tracing to a different drawable node
-from the mind map — then iterations inside the chosen one. Parallel subagents for both.
+**This step does not draw the mark. It briefs the user and verifies what comes back.**
 
-**Include the favicon strip** — every option at 64, 32 and 16px. "It must survive at
-favicon size" is an aspiration until you can see it failing.
+Two independent runs produced 14 concepts and **1 usable one**; the second cost ~750k
+subagent tokens and the user drew the final mark themselves. The agents were blind — on one
+run six of them separately built their own rasterisers because none could see its own work.
+**The user has eyes and reacts in real time. The drawing goes to them.**
+
+| We do | The user does |
+|-------|---------------|
+| Derive the logo type | Runs a logo tool live |
+| Turn mind-map nodes into 3–5 concept **directions**, in words, each with its source | Reacts, iterates, redirects |
+| Build a paste-ready brief — format, style, palette state, directions, exclusions, occupied territory | Brings back a mark |
+| Verify: export, real 16px, monochrome, no live text, cultural read, redraw test | |
+| Derive clear space, minimum sizes, ranked colourways | |
+
+**`FEELINGS` in that brief uses the user's own words, verbatim** — not your translation of
+them. This is exactly where the 750k was lost.
+
+**If the user asks us to sketch anyway:** main thread only, never fan out, two or three not
+five, render and look at each, and say plainly they are rough sketches to react to.
+
+**Run `scripts/export.sh` on every concept BEFORE presenting it.** Not at the end — before.
+It is the verification step, and it is the only thing that tells the truth:
+
+- **A browser-scaled SVG is not a favicon.** The preview strip anti-aliases cleaner than
+  reality. Tested on this brief: a concept that read as a legible eye at 16px in the strip
+  rasterised to a blurry bullseye with the eye gone. **The strip understated the failure,
+  and the strip is what the decision gets made on.**
+- It proves the SVG is valid, self-contained, and free of live `<text>` — rasterisers
+  substitute fonts, which distorts Latin and breaks Arabic letter joining outright.
+- The monochrome pass reveals shapes that collapse without colour, which engraving and
+  stamping will do anyway.
+
+**Put the real rasterised 16px PNGs in the favicon strip, not CSS-scaled SVG.**
 
 **Present each concept with its derivation.** "The falcon's eye, where the curve doubles as
 a blade edge." A concept nobody can trace cannot be defended later.
 
-Export with `scripts/export.sh`. It refuses SVGs still holding live `<text>` — rasterisers
-substitute fonts, which distorts Latin and can break Arabic letter joining outright.
+**Audit symbols for cultural reading before presenting.** The forbidden list catches what
+the brief named; it will not catch what nobody thought to name. A six-pointed radial form
+generated for an Iraqi brand on this very run carried religious and political weight that no
+colour rule would have flagged. **Look at each mark and ask what else it resembles in the
+stated market** — flags, religious symbols, political emblems, gestures, existing marks.
 
 **Bilingual wordmarks are drawn twice**, locking to one symbol. Never translated at the
 end. Arabic calligraphic wordmarks are a specialist craft — set them in a real Arabic

@@ -17,7 +17,9 @@
 #      outright. Override with --allow-text.
 #   3. Added a monochrome export — required for engraving, foil, stamping, and
 #      one-colour print. Suppress with --no-mono.
-#   4. Install hints are now platform-aware; the original suggested Homebrew only.
+#   4. Install hints are now platform-aware; the original suggested Homebrew only, and
+#      recommended `@aspect-build/resvg`, which does not exist on npm — it 404s. Replaced
+#      with sharp (verified working) and @resvg/resvg-js.
 #
 set -euo pipefail
 
@@ -43,6 +45,18 @@ BASENAME="logo"
 
 [ -f "$INPUT_SVG" ] || { echo "ERROR: no such file: $INPUT_SVG" >&2; exit 1; }
 mkdir -p "$OUTPUT_DIR"
+
+# --- Path normalisation -------------------------------------------------------------
+# On Git Bash / MSYS the shell speaks /c/Users/... but node, Inkscape and rsvg-convert are
+# Windows-native and cannot resolve it. Left unconverted they fail, the SVG copy still
+# succeeds, and the run looks like it worked while producing no PNGs at all.
+native() {
+  case "$(uname -s)" in
+    MINGW*|MSYS*|CYGWIN*)
+      if command -v cygpath &>/dev/null; then cygpath -w "$1"; else printf '%s' "$1"; fi ;;
+    *) printf '%s' "$1" ;;
+  esac
+}
 
 # --- Guard: live <text> ------------------------------------------------------------
 if grep -qi '<text' "$INPUT_SVG"; then
@@ -77,7 +91,8 @@ else
   echo "ERROR: No SVG-to-PNG converter found." >&2
   echo "" >&2
   echo "Install one of the following:" >&2
-  echo "  npm install -g @aspect-build/resvg     (recommended — works on every platform)" >&2
+  echo "  npm install sharp                      (recommended — verified working, every platform)" >&2
+  echo "  npm install -g @resvg/resvg-js" >&2
   case "$(uname -s)" in
     MINGW*|MSYS*|CYGWIN*)
       echo "  winget install Inkscape.Inkscape" >&2
@@ -95,20 +110,25 @@ fi
 
 # --- Rasterise: always scale by WIDTH, never force a square ------------------------
 render() {  # render <src.svg> <out.png> <width>
-  local src="$1" out="$2" w="$3"
+  local src out w nsrc nout
+  src="$1"; out="$2"; w="$3"
+  nsrc="$(native "$src")"; nout="$(native "$out")"
   case "$TOOL" in
-    resvg)        resvg "$src" "$out" --width "$w" ;;
-    npx-resvg)    npx --yes @aspect-build/resvg "$src" "$out" --width "$w" ;;
-    sharp)        node -e "
+    resvg)        resvg "$nsrc" "$nout" --width "$w" ;;
+    npx-resvg)    npx --yes @resvg/resvg-js "$nsrc" "$nout" --width "$w" ;;
+    sharp)        SVG_IN="$nsrc" PNG_OUT="$nout" PNG_W="$w" node -e "
                     const sharp=require('sharp');
-                    sharp('$src').resize({ width: $w })
-                      .png().toFile('$out')
+                    sharp(process.env.SVG_IN).resize({ width: +process.env.PNG_W })
+                      .png().toFile(process.env.PNG_OUT)
                       .then(()=>process.exit(0))
-                      .catch(e=>{console.error(e);process.exit(1);});
+                      .catch(e=>{console.error('render failed:', e.message);process.exit(1);});
                   " ;;
-    inkscape)     inkscape "$src" --export-type=png --export-filename="$out" --export-width="$w" ;;
-    rsvg-convert) rsvg-convert -w "$w" -o "$out" "$src" ;;
+    inkscape)     inkscape "$nsrc" --export-type=png --export-filename="$nout" --export-width="$w" ;;
+    rsvg-convert) rsvg-convert -w "$w" -o "$nout" "$nsrc" ;;
   esac
+  # Never let a silent failure pass as success.
+  [ -s "$out" ] || { echo "ERROR: $TOOL produced no output for width ${w}." >&2
+                     echo "       expected: $out" >&2; exit 1; }
 }
 
 echo "Using: $TOOL"
@@ -150,5 +170,18 @@ if [ "$MAKE_MONO" -eq 1 ]; then
   echo "        gradients and overlapping shapes may need redrawing by hand."
 fi
 
+# --- Final verification -------------------------------------------------------------
+# The whole point of this script is to tell the truth about whether the mark rasterises.
+# A run that produced nothing must never look like a run that succeeded.
+EXPECTED=$(( ${#SIZES[@]} + 1 ))                       # PNGs + the copied SVG
+[ "$MAKE_MONO" -eq 1 ] && EXPECTED=$(( EXPECTED + ${#MONO_SIZES[@]} + 1 ))
+ACTUAL=$(find "$OUTPUT_DIR" -maxdepth 1 -type f \( -name '*.png' -o -name '*.svg' \) | wc -l)
+
+if [ "$ACTUAL" -lt "$EXPECTED" ]; then
+  echo "" >&2
+  echo "ERROR: expected $EXPECTED files, found $ACTUAL. The export did NOT succeed." >&2
+  exit 1
+fi
+
 echo ""
-echo "Done. Files in: $OUTPUT_DIR"
+echo "Verified: $ACTUAL files in $OUTPUT_DIR"

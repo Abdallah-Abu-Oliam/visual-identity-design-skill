@@ -1,0 +1,92 @@
+<!-- @dsCard group="Applications" name="Asset library & governance" subtitle="Where the files are, who decides, what is unfinished" viewport="640x820" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Asset library & governance</title>
+<link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+<main class="page">
+
+<p class="kicker">Applications · six</p>
+<h1>Where the files are, and who decides.</h1>
+<p class="lead">Without a named owner for exceptions, every ambiguity becomes an invention — and the identity drifts one reasonable-seeming decision at a time.</p>
+
+<h2>Asset library</h2>
+<table>
+  <tr><th>Asset</th><th>File</th><th>Use</th></tr>
+  <tr><td><b>Primary mark</b></td><td><code>assets/noyau-ink.svg</code></td><td>Default, everywhere. Ink on light grounds.</td></tr>
+  <tr><td><b>Reversed</b></td><td><code>assets/noyau-paper.svg</code></td><td>On Ink, Terracotta, Olive, and photography.</td></tr>
+  <tr><td><b>Terracotta</b></td><td><code>assets/noyau-terracotta.svg</code></td><td>Warm alternative — merchandise, covers, one-colour print.</td></tr>
+  <tr><td><b>Olive</b></td><td><code>assets/noyau-olive.svg</code></td><td>Supporting only, inside illustrated material.</td></tr>
+  <tr><td><b>Reduced mark</b></td><td><code>assets/noyau-mark-small.svg</code></td><td><b>Below ~32px.</b> Favicon, app icon, small stamps.</td></tr>
+  <tr><td><b>Le Grain tiles</b></td><td><code>assets/le-grain-{sand,apricot,paper,ink}.svg</code></td><td>Seamless 400×400. Tile at the register the surface needs.</td></tr>
+  <tr><td><b>Master source</b></td><td><code>logos/final/noyau-mark.svg</code></td><td>The single source of truth. Colourways are generated from it.</td></tr>
+  <tr><td><b>Raster exports</b></td><td><code>logos/final/export/</code></td><td>PNG at 16–2048, plus the one-colour master.</td></tr>
+</table>
+<div class="rule"><b>To recolour anything, change one value.</b> The mark inherits a single <code>color</code> attribute; the whole book rebrands from <code>:root</code> in <code>styles.css</code>. Keep <code>theme.json</code> in step so the machine-readable record does not drift from what the CSS does.</div>
+<div class="no"><b class="mark-no">Never re-export the mark from a raster.</b> If a file is needed at a new size, generate it from the SVG. A PNG traced back into vector is not the mark.</div>
+
+<h2>Governance</h2>
+<table>
+  <tr><th>Decision</th><th>Who</th></tr>
+  <tr><td>Anything on this page's forbidden lists</td><td><b>Not a judgement call.</b> These are derived from competitor evidence and accessibility measurement, not taste. They do not get overridden locally.</td></tr>
+  <tr><td>A surface not covered here</td><td>Take the nearest layout stack and the ranked colourways. If neither answers it, ask before inventing.</td></tr>
+  <tr><td>New photography</td><td>Must meet the dignity standard and have recorded, revocable consent. No exceptions for "just this once".</td></tr>
+  <tr><td>Co-branding with a new partner</td><td>Check which of the two rules applies — partner or funder. They are not interchangeable.</td></tr>
+  <tr><td>Anything involving the name legally</td><td><b>Trademark attorney.</b> The name has been searched, not cleared.</td></tr>
+</table>
+<div class="rule"><b>One address for exceptions.</b> Put a real person's email here before this book is circulated. A guideline with no contact teaches people to guess.</div>
+
+<h2>⚠ What is not finished</h2>
+<p>Included deliberately. A book that hides its own loose ends teaches people to distrust the rest of it.</p>
+
+<div class="no">
+  <b>1 · The Pantone values are unverified.</b> Every PMS reference in this book is a starting
+  point produced on a screen. Pantone cannot be matched that way — the chips are printed ink
+  under controlled light. Take a proof to a physical guide under D50 and pick by eye; the
+  printer's choice replaces these values permanently.
+</div>
+
+<div class="no">
+  <b>2 · The public claim needs narrowing.</b> "Nuclear does not cause cancer" is broader than
+  what survives challenge. The defensible version: <i>normal operation of nuclear power does
+  not measurably raise cancer risk in surrounding populations, while high-dose radiation
+  genuinely is carcinogenic — which is exactly why it is used to treat tumours.</i> This is a
+  tone-of-voice matter, not a visual one, but for a brand whose only asset is trust, one
+  successful public correction costs more than the broad claim ever gained.
+</div>
+
+<div class="no">
+  <b>3 · The brand's photography does not exist.</b> No free-licence library contains a
+  volunteer sitting with a child in treatment — checked directly. Every image currently in
+  circulation is a placeholder. This identity commits the organisation to commissioning its
+  own, to the four categories and the dignity standard in Visual language.
+</div>
+
+<h2>Resolved, recorded so it is not reopened</h2>
+<div class="rule">
+  <b class="mark-ok">The wheat separations.</b> Originally painted white, which made the mark
+  unusable reversed or on colour. Rebuilt by boolean subtraction in draw order so every gap is
+  <b>real negative space</b> — cut only where a grain overlaps other ink, never where it sits
+  on the background. A naive mask that cut them everywhere turned each grain into a hollow
+  ring; that attempt was rendered, seen and reverted. All colourways and the one-colour master
+  are now correct.
+</div>
+
+<h2>Sections deliberately not included</h2>
+<p class="small muted">An unused section is padding, and padding is how a guideline stops being read. Each of these has a trigger that does not currently apply.</p>
+<table>
+  <tr><td><b>Strapline</b></td><td>No tagline exists. If one is written, it becomes a separate asset with its own positioning rules.</td></tr>
+  <tr><td><b>Sub-brands</b></td><td>One organisation, one line.</td></tr>
+  <tr><td><b>Motion identity</b></td><td>Add when there is video or an animated surface. The holding rule is in Applications.</td></tr>
+  <tr><td><b>Iconography</b></td><td>No icon set exists yet. If one is built, it is the natural second pattern route.</td></tr>
+  <tr><td><b>Packaging · environmental · 3D</b></td><td>No physical product, no premises.</td></tr>
+  <tr><td><b>Campaign history</b></td><td>New organisation. Worth starting once there is a track record — it teaches the voice better than describing it.</td></tr>
+</table>
+
+</main>
+</body>
+</html>

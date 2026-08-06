@@ -1,0 +1,151 @@
+<!-- @dsCard group="Applications" name="Layout templates" subtitle="Percentage stacks — one template at any output size" viewport="640x900" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Layout templates</title>
+<link rel="stylesheet" href="../styles.css">
+<style>
+  .tmpl { border:1px solid var(--color-line); background:var(--color-surface); }
+  .tmpl .stack { display:flex; flex-direction:column; height:340px; }
+  .tmpl .stack > div { display:flex; align-items:center; justify-content:center;
+                       font-size:.6rem; letter-spacing:.09em; text-transform:uppercase;
+                       color:var(--color-muted); overflow:hidden; }
+  .m  { background:var(--color-paper); }
+  .lg { background:var(--color-sand); }
+  .tx { background:color-mix(in srgb, var(--color-ink) 8%, transparent); }
+  .im { background:color-mix(in srgb, var(--color-olive) 30%, transparent); }
+  .ac { background:var(--color-apricot); color:var(--color-ink) !important; }
+  .tmpl .cap { padding:var(--space-3) var(--space-4); border-top:1px solid var(--color-line);
+               font-family:var(--font-mono); font-size:.6rem; line-height:1.7; }
+  .app img { width:100%; display:block; }
+</style>
+</head>
+<body>
+<main class="page">
+
+<p class="kicker">Applications · six</p>
+<h1>Percentages, so one template works at any size.</h1>
+<p class="lead">A layout given in millimetres breaks the moment the format changes. Given as a percentage stack, the same template holds from a postcard to a festival banner.</p>
+
+<h2>The stacks</h2>
+<div class="grid grid-3">
+
+  <figure class="tmpl">
+    <div class="stack">
+      <div class="m" style="height:6%">6% margin</div>
+      <div class="lg" style="height:12%">12% logo</div>
+      <div class="m" style="height:8%">8%</div>
+      <div class="tx" style="height:26%">26% headline</div>
+      <div class="m" style="height:4%">4%</div>
+      <div class="tx" style="height:14%">14% body</div>
+      <div class="m" style="height:22%">22% margin</div>
+      <div class="ac" style="height:8%">8% action</div>
+    </div>
+    <div class="cap">VERTICAL — poster, flyer<br>6 · 12 · 8 · 26 · 4 · 14 · 22 · 8</div>
+  </figure>
+
+  <figure class="tmpl">
+    <div class="stack">
+      <div class="m" style="height:5%">5%</div>
+      <div class="im" style="height:46%">46% image</div>
+      <div class="m" style="height:5%">5%</div>
+      <div class="tx" style="height:20%">20% headline</div>
+      <div class="m" style="height:3%">3%</div>
+      <div class="tx" style="height:10%">10% body</div>
+      <div class="m" style="height:5%">5%</div>
+      <div class="lg" style="height:6%">6% logo</div>
+    </div>
+    <div class="cap">IMAGE &amp; TEXT — social, explainer<br>5 · 46 · 5 · 20 · 3 · 10 · 5 · 6</div>
+  </figure>
+
+  <figure class="tmpl">
+    <div class="stack">
+      <div class="lg" style="height:10%">10% logo</div>
+      <div class="m" style="height:10%">10%</div>
+      <div class="tx" style="height:34%">34% statement</div>
+      <div class="m" style="height:38%">38% grain field</div>
+      <div class="tx" style="height:8%">8% url</div>
+    </div>
+    <div class="cap">BANNER — festival, signage<br>10 · 10 · 34 · 38 · 8</div>
+  </figure>
+
+  <figure class="tmpl">
+    <div class="stack">
+      <div class="m" style="height:8%">8%</div>
+      <div class="lg" style="height:14%">14% logo</div>
+      <div class="m" style="height:30%">30% grain</div>
+      <div class="tx" style="height:22%">22% name + line</div>
+      <div class="m" style="height:8%">8%</div>
+      <div class="tx" style="height:12%">12% contact</div>
+      <div class="m" style="height:6%">6%</div>
+    </div>
+    <div class="cap">CARD — business, ward card<br>8 · 14 · 30 · 22 · 8 · 12 · 6</div>
+  </figure>
+
+  <figure class="tmpl">
+    <div class="stack">
+      <div class="im" style="height:58%">58% image, full bleed</div>
+      <div class="m" style="height:4%">4%</div>
+      <div class="tx" style="height:18%">18% headline</div>
+      <div class="m" style="height:3%">3%</div>
+      <div class="tx" style="height:11%">11% body</div>
+      <div class="lg" style="height:6%">6% logo</div>
+    </div>
+    <div class="cap">IMAGE-LED — web hero<br>58 · 4 · 18 · 3 · 11 · 6</div>
+  </figure>
+
+  <figure class="tmpl">
+    <div class="stack">
+      <div class="m" style="height:10%">10%</div>
+      <div class="tx" style="height:44%">44% quote</div>
+      <div class="m" style="height:26%">26% grain field</div>
+      <div class="lg" style="height:10%">10% logo</div>
+      <div class="m" style="height:10%">10%</div>
+    </div>
+    <div class="cap">SQUARE — social quote<br>10 · 44 · 26 · 10 · 10</div>
+  </figure>
+
+</div>
+
+<div class="why">
+  <b>Why the margin percentages look generous.</b> Mass-market was set at 25/100 and the ward
+  legibility floor demands generous type — together those mean fewer words, larger, with more
+  air. A stack that fills 90% of the page with content is the wrong brand.
+</div>
+
+<h2>Rules that apply to every stack</h2>
+<div class="rule"><b class="mark-ok">The action block is the only Apricot on the page.</b> It appears once. If a layout needs two calls to action, it needs to be two layouts.</div>
+<div class="rule"><b class="mark-ok">The grain field is where Le Grain lives</b> — a band with nothing on it. Content never sits directly on the pattern; it sits on a solid plate.</div>
+<div class="no"><b class="mark-no">Never the placard rhythm.</b> A full-bleed colour block plus declarative headline plus button, repeated down a page, is the compositional signature of protest material. It is what the anti-nuclear sites do, and inheriting it makes this brand their mirror image.</div>
+
+<h2>Print</h2>
+<table>
+  <tr><td><b>Stock</b></td><td>Uncoated. Paper is the substrate, not an ink — print on a warm white uncoated sheet rather than laying down a background.</td></tr>
+  <tr><td><b>Colour</b></td><td>Two-colour (Ink + one) wherever budget allows. The identity was built so one-colour works.</td></tr>
+  <tr><td><b>Finish</b></td><td>None. No lamination, no spot UV, no foil. Gloss reads corporate — the register the brief forbids.</td></tr>
+  <tr><td><b>Ward material</b></td><td>14 pt body minimum. Matte only — glare is a real problem for someone reading in bed.</td></tr>
+</table>
+
+<h2>Digital</h2>
+<table>
+  <tr><td><b>Base size</b></td><td>18px, including mobile. Do not reduce on small screens.</td></tr>
+  <tr><td><b>Interactive</b></td><td>Terracotta with Paper text. <b>Never Apricot with light text</b> — 2.44:1, fails.</td></tr>
+  <tr><td><b>Favicon</b></td><td>The reduced mark. <code>noyau-mark-small.svg</code> at 16 and 32px.</td></tr>
+  <tr><td><b>Font loading</b></td><td><code>display=swap</code>. For an audience possibly on poor connections in a hospital, invisible text is worse than briefly unstyled text.</td></tr>
+  <tr><td><b>Motion</b></td><td>Minimal. If the mark moves, it moves as one object. Nothing bounces.</td></tr>
+</table>
+
+<h2>Applied</h2>
+<div class="grid grid-2 app">
+  <figure><img src="../assets/app-poster.jpg" alt="Poster"><figcaption>Poster — banner stack, apricot grain field</figcaption></figure>
+  <figure><img src="../assets/app-card.jpg" alt="Card"><figcaption>Card — card stack, fine grain</figcaption></figure>
+  <figure><img src="../assets/app-tote.jpg" alt="Tote"><figcaption>Tote — one colour on natural canvas</figcaption></figure>
+  <figure><img src="../assets/app-tshirt.jpg" alt="T-shirt"><figcaption>T-shirt — chest print, one colour</figcaption></figure>
+</div>
+<p class="small muted">These are review artifacts at roughly 1400px, and their photography is placeholder. Anything printed uses the vector files.</p>
+
+</main>
+</body>
+</html>

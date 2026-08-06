@@ -1,0 +1,50 @@
+<!-- @dsCard group="Essence" name="Noyau" subtitle="Brand guidelines — cover" viewport="640x680" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Noyau — guidelines</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+  /* The pattern is a FIELD. Everything readable sits on a solid plate on top of
+     it — including the mark, whose wreath separations disappear against texture.
+     This page is the book's own first demonstration of both rules.            */
+  body {
+    background-color: var(--color-ink);
+    background-image: url("assets/le-grain-paper.svg");
+    background-size: 420px;
+    color: var(--color-paper);
+  }
+  .frame {
+    min-height: 100vh;
+    display: flex; align-items: center; justify-content: flex-start;
+    padding: var(--space-7) var(--space-6);
+  }
+  .panel {
+    background: var(--color-ink);
+    padding: var(--space-7) var(--space-7) var(--space-8);
+    max-width: 30rem;
+  }
+  .panel img.mark { width: 84px; height: 84px; display: block; margin-bottom: var(--space-6); }
+  .panel .kicker { color: var(--color-paper); opacity: .55; margin-bottom: var(--space-4); }
+  .panel h1 { color: var(--color-paper); margin: 0 0 var(--space-5); }
+  .panel .lead { color: var(--color-paper); margin: 0 0 var(--space-4); }
+  .panel p { color: var(--color-paper); opacity: .78; font-size: var(--size-small); margin: 0; }
+  .panel hr { border-top-color: color-mix(in srgb, var(--color-paper) 22%, transparent);
+              margin: var(--space-5) 0; }
+</style>
+</head>
+<body>
+<main class="frame">
+  <div class="panel">
+    <img class="mark" src="assets/noyau-paper.svg" alt="Noyau">
+    <p class="kicker">Identité visuelle</p>
+    <h1 class="display" style="font-size:3.4rem;margin-bottom:var(--space-5)">Noyau</h1>
+    <p class="lead">Le même mot dit le noyau de l'atome et le noyau d'une famille.</p>
+    <hr>
+    <p>Guidelines for a French nonprofit correcting the belief that nuclear power causes cancer. Every rule here carries the reason it exists.</p>
+  </div>
+</main>
+</body>
+</html>

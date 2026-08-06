@@ -1,0 +1,146 @@
+<!-- @dsCard group="Visual language" name="Le Grain" subtitle="The pattern — three registers, cropping, the content rule" viewport="640x900" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Le Grain</title>
+<link rel="stylesheet" href="../styles.css">
+<style>
+  .tile { aspect-ratio:1/1; border:1px solid var(--color-line); background-color:var(--color-paper);
+          background-image:url("../assets/le-grain-sand.svg"); }
+  .banner { aspect-ratio:21/9; padding:var(--space-5); display:flex; flex-direction:column;
+            justify-content:space-between; background-color:var(--color-ink); color:var(--color-paper); }
+  .banner.on { background-image:url("../assets/le-grain-paper.svg"); background-size:520px; }
+  .banner .t { font-family:var(--font-heading); font-weight:600; font-size:1.55rem; line-height:1.05;
+               font-variation-settings:"opsz" 144,"SOFT" 45; max-width:16ch; letter-spacing:-.02em; }
+  .banner img { width:32px; height:32px; }
+  .banner .pl { background:var(--color-ink); display:inline-block; padding:4px 10px 6px; }
+  /* The mark gets a plate too — its wreath separations are fine negative space
+     and disappear against texture. See Logo · Misuses.                        */
+  .banner .markplate { background:var(--color-ink); display:inline-block;
+                       padding:6px 8px; line-height:0; }
+  .crop { border:1px solid var(--color-line); background:var(--color-surface); }
+  .crop .art { height:160px; background-color:var(--color-paper);
+               background-image:url("../assets/le-grain-sand.svg"); background-size:200px; }
+  .crop .art.floating { margin:22px; height:116px; border:1px dashed var(--color-line-firm); }
+  .crop .txt { padding:var(--space-3) var(--space-4) var(--space-4); border-top:1px solid var(--color-line);
+               font-size:var(--size-caption); line-height:1.55; }
+</style>
+</head>
+<body>
+<main class="page">
+
+<p class="kicker">Visual language · five</p>
+<h1 class="display" style="font-size:3.2rem">Le Grain</h1>
+<p class="lead">Three meanings in one word — the seed, the surface texture of a material, and the wheat already standing in the mark. The same trick as <i>Noyau</i> itself.</p>
+
+<div class="why">
+  <b>Why this exists at all.</b> The assembled identity failed the boring test: the mark was
+  unmistakable and everything around it could have belonged to a skincare company. Worse, at a
+  festival, at distance, the surfaces <b>read as nothing</b> until you were close enough to
+  see the mark. A logo, a palette and a typeface are each one decision a competitor copies in
+  an afternoon. <b>A pattern taken from the brand's own material cannot be taken back without
+  taking the brand.</b>
+</div>
+
+<h2>Where it comes from</h2>
+<p>Not decoration applied afterwards. The question was <b>what is this brand physically made of</b> — and a <i>noyau</i> is the stone at the centre of a fruit, whose surface is grooved, pitted and ridged. That texture belongs to the name.</p>
+
+<h2>Construction</h2>
+<table>
+  <tr><td><b>Tile</b></td><td>Seamless 400 × 400, wrapped on both axes</td></tr>
+  <tr><td><b>Marks</b></td><td>150, placed by toroidal Poisson sampling — never closer than 22 units, measured across the boundary too, so density stays even</td></tr>
+  <tr><td><b>Direction</b></td><td>Angles from a flow field, <code>sin(x/118) + cos(y/96)</code> — this is what makes the grain <i>run</i> instead of scattering like confetti</td></tr>
+  <tr><td><b>Variation</b></td><td>Lengths 9–30 at near-constant width. <b>16% are round pits</b>, which is what stops it reading as fur</td></tr>
+  <tr><td><b>Colour</b></td><td>One flat fill. No strokes, no gradients — <b>photocopy-safe</b></td></tr>
+</table>
+
+<h2>Three registers, one tile</h2>
+<div class="grid grid-3">
+  <figure><div class="tile" style="background-size:120px"></div><figcaption>Fine · ~120px — texture</figcaption></figure>
+  <figure><div class="tile" style="background-size:300px"></div><figcaption>Standard · ~300px — grain</figcaption></figure>
+  <figure><div class="tile" style="background-size:700px"></div><figcaption>Large · ~700px+ — a mark at distance</figcaption></figure>
+</div>
+<div class="rule"><b>The tile never changes; scale is the variable.</b> The large register is the one that solves the failure — at forty metres nobody reads a logo, they see a surface.</div>
+
+<h2>The argument — before and after</h2>
+<p class="small muted">Same mark, same colours, same type. The only difference is Le Grain.</p>
+<div class="grid grid-2">
+  <figure>
+    <div class="banner">
+      <img src="../assets/noyau-paper.svg" alt="">
+      <div class="t">Ce qu'on craint est ce qui soigne.</div>
+      <div style="font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;opacity:.6">noyau.eu</div>
+    </div>
+    <figcaption>Without</figcaption>
+  </figure>
+  <figure>
+    <div class="banner on">
+      <span class="markplate"><img src="../assets/noyau-paper.svg" alt=""></span>
+      <div class="t"><span class="pl">Ce qu'on craint<br>est ce qui soigne.</span></div>
+      <div><span class="pl" style="font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;opacity:.8">noyau.eu</span></div>
+    </div>
+    <figcaption>With Le Grain</figcaption>
+  </figure>
+</div>
+
+<h2>The content rule</h2>
+<div class="rule">
+  <b class="mark-ok">Content sits on flat colour. Always.</b> Where text must appear over Le
+  Grain, a <b>solid plate</b> of Paper or Ink goes underneath it — never a transparency. Le
+  Grain appears where it stands alone: panel backgrounds, card reverses, banner fields, the
+  margins of a spread, endpapers.
+</div>
+<div class="no"><b class="mark-no">A pattern that competes with the message has cost more than it gained.</b></div>
+<div class="rule">
+  <b class="mark-ok">The mark needs a plate too — not just the text.</b> Its wreath
+  separations are fine negative space, engineered by boolean subtraction. Against a texture
+  they fill in and the wreath turns into a blob. Look at the banner above: the mark sits on
+  its own small solid block, not on the grain.
+</div>
+<div class="why">
+  <b>This rule was broken on this book's own cover in the first draft</b> — the mark and the
+  body copy were both laid straight onto the pattern, and the copy was unreadable. Recorded
+  because it is the easiest rule here to break by accident, and because a guideline that
+  contradicts itself teaches people to ignore all of it.
+</div>
+
+<h2>Cropping</h2>
+<div class="grid grid-2">
+  <figure class="crop"><div class="art"></div>
+    <div class="txt"><b class="mark-ok">Correct — run it off the edge</b> The tile is seamless in both axes, so crop anywhere and let it bleed. Any part of it is as good as any other.</div>
+  </figure>
+  <figure class="crop bad"><div class="art floating"></div>
+    <div class="txt"><b class="mark-no">Incorrect — floating swatch</b> A rectangle of pattern with margin on all four sides reads as something pasted in. A mistake, not a system.</div>
+  </figure>
+</div>
+<div class="no">
+  <b class="mark-no">Never rotate the tile.</b> The flow field has a direction; two rotated
+  applications will visibly disagree.<br>
+  <b class="mark-no">Never scale below ~80px or above ~1400px per tile.</b> Below, it turns to
+  noise; above, the individual marks read as objects and it stops being texture.
+</div>
+
+<h2>Contrast ceiling</h2>
+<p>Le Grain is a <b>tone, not a graphic</b>. It must stay quiet against whatever it sits on.</p>
+<table>
+  <tr><td>Sand grain on Paper</td><td class="mark-ok">Ideal — the default</td></tr>
+  <tr><td>Apricot grain on Paper</td><td class="mark-ok">Warm accent panels</td></tr>
+  <tr><td>Paper grain on Ink or Terracotta</td><td class="mark-ok">Reversed panels</td></tr>
+  <tr><td>Ink grain on Paper</td><td>⚠️ Large register only — too loud when fine</td></tr>
+  <tr><td>Apricot grain on Sand</td><td class="mark-no">Too close in value — turns to mud</td></tr>
+</table>
+
+<div class="why">
+  <b>A coarser variant was made and rejected.</b> Long curved strokes, sparser and heavier. It
+  read as <b>scribble and brambles</b> — busy, aggressive, hand-drawn in the wrong way — and
+  failed the personality directly, which is set at <i>reserved</i> and <i>indirect</i>.
+  Recorded so it is not re-proposed: it was built, rendered, looked at, and turned down.
+</div>
+
+<div class="rule"><b>Used once, a pattern is an ornament. Used everywhere, it becomes the thing people recognise before they read the name.</b> That is the only reason this element exists, and it only pays off if it is applied consistently.</div>
+
+</main>
+</body>
+</html>

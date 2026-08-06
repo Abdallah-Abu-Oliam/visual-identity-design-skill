@@ -1,0 +1,172 @@
+/* ==========================================================================
+   preview.css — the working pages.
+
+   Copy this to brand/preview.css at Phase 2 and link it from EVERY page the
+   process generates: the mind map, the art direction boards, logo previews,
+   palette and type specimens, assembly, pattern before/after, mockups.
+
+       <link rel="stylesheet" href="../preview.css">
+
+   Why: eleven bespoke pages on one real run each re-declared the same colour
+   variables, the same .why block, the same card grid, inline. Roughly 20-25k
+   tokens of pure duplication plus the cost of re-deciding the same styling
+   eleven times.
+
+   The tokens below are NEUTRAL on purpose. Once colour is derived at 3.2,
+   overwrite the six --b-* values with the real palette and every page built
+   before that moment silently re-renders in the brand.
+
+   This is NOT the deliverable stylesheet. The guidelines book has its own,
+   in assets/design-system/styles.css.
+   ========================================================================== */
+
+:root {
+  /* --- Brand tokens. Overwrite these six at 3.2 and everything follows. --- */
+  --b-ink:      #1f1d1a;
+  --b-paper:    #f7f5f1;
+  --b-accent:   #8a6a3b;
+  --b-surface:  #ffffff;
+  --b-line:     #dedad2;
+  --b-muted:    #6f6a62;
+
+  /* --- Working-page chrome. Not the brand. --- */
+  --ok:   #2f6b4f;
+  --no:   #a8483c;
+  --warn: #b45309;
+
+  --r-sm: 5px; --r-md: 8px; --r-lg: 12px;
+  --s-1: 4px; --s-2: 8px; --s-3: 12px; --s-4: 16px;
+  --s-5: 24px; --s-6: 32px; --s-7: 48px;
+
+  --measure: 72ch;
+  --page: 1020px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --b-ink: #efece5; --b-paper: #141310; --b-accent: #d3a45f;
+    --b-surface: #1c1b17; --b-line: #312e28; --b-muted: #958f84;
+    --ok: #4ade80; --no: #c96b5d; --warn: #fbbf24;
+  }
+}
+:root[data-theme="dark"] {
+  --b-ink: #efece5; --b-paper: #141310; --b-accent: #d3a45f;
+  --b-surface: #1c1b17; --b-line: #312e28; --b-muted: #958f84;
+  --ok: #4ade80; --no: #c96b5d; --warn: #fbbf24;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--b-paper);
+  color: var(--b-ink);
+  font: 15px/1.65 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+[dir="rtl"] body, [lang="ar"] body {
+  font-family: "Noto Naskh Arabic", "Segoe UI", Tahoma, ui-sans-serif, sans-serif;
+  line-height: 1.9;
+}
+
+.page { max-width: var(--page); margin: 0 auto; padding: var(--s-6) var(--s-5) 90px; }
+
+h1 { font-size: 21px; margin: 0 0 var(--s-1); }
+h2 { font-size: 16px; margin: var(--s-6) 0 var(--s-2); }
+h3 { font-size: 14px; margin: var(--s-5) 0 var(--s-2); }
+p  { margin: 0 0 var(--s-4); max-width: var(--measure); }
+
+.kicker {
+  font-family: ui-monospace, Consolas, monospace;
+  font-size: 11.5px; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--b-muted); margin-bottom: var(--s-1);
+}
+.lede { color: var(--b-muted); font-size: 13.5px; max-width: var(--measure); margin: 0 0 var(--s-2); }
+.rule { border: 0; border-top: 2px solid var(--b-ink); margin: var(--s-5) 0 var(--s-4); }
+.ar   { font-family: "Noto Naskh Arabic", "Segoe UI", serif; direction: rtl; }
+
+/* --- The derivation note. Every decision carries its reasoning. ----------- */
+.why {
+  border-left: 3px solid var(--b-accent);
+  padding: var(--s-2) 0 var(--s-2) var(--s-4);
+  margin: var(--s-4) 0;
+  color: var(--b-muted); font-size: 13.5px; max-width: var(--measure);
+}
+[dir="rtl"] .why { border-left: 0; border-right: 3px solid var(--b-accent);
+                   padding: var(--s-2) var(--s-4) var(--s-2) 0; }
+.why b { color: var(--b-ink); }
+
+/* --- Cards and grids ------------------------------------------------------ */
+.grid  { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: var(--s-4); }
+.grid4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 7px; }
+@media (max-width: 640px) { .grid4 { grid-template-columns: repeat(2, 1fr); } }
+.grid4 img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: var(--r-sm); display: block; background: var(--b-line); }
+
+.card {
+  background: var(--b-surface); border: 1px solid var(--b-line);
+  border-radius: var(--r-lg); overflow: hidden; transition: border-color .15s;
+}
+.card.on { border-color: var(--b-accent); border-width: 2px; }
+.card .stage { background: #fff; display: grid; place-items: center; padding: var(--s-6); min-height: 200px; }
+.card .stage svg, .card .stage img { max-width: 150px; max-height: 150px; display: block; }
+.card .meta { padding: var(--s-3) var(--s-4) var(--s-4); }
+
+/* --- Do / don't ----------------------------------------------------------- */
+.demo { border: 1px solid var(--b-line); border-radius: var(--r-md); background: var(--b-surface); padding: var(--s-4); }
+.demo .stage { display: grid; place-items: center; min-height: 130px; }
+.demo figcaption { font-size: 11.5px; color: var(--b-muted); margin-top: var(--s-3); display: flex; gap: var(--s-2); align-items: baseline; }
+.demo.no  { border-color: color-mix(in srgb, var(--no) 40%, transparent); }
+.demo.no  figcaption::before { content: "\2717"; color: var(--no); font-weight: 700; }
+.demo.yes figcaption::before { content: "\2713"; color: var(--ok); font-weight: 700; }
+
+/* --- Swatches ------------------------------------------------------------- */
+.swatches { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--s-4); }
+.swatch   { border: 1px solid var(--b-line); border-radius: var(--r-md); overflow: hidden; background: var(--b-surface); }
+.swatch .chip { height: 120px; display: flex; align-items: flex-end; padding: var(--s-3); }
+.swatch .meta { padding: var(--s-3) var(--s-4) var(--s-4); }
+.swatch dl { display: grid; grid-template-columns: 3.4em 1fr; gap: 2px var(--s-3); margin: var(--s-3) 0 0;
+             font-family: ui-monospace, Consolas, monospace; font-size: 11.5px; }
+.swatch dt { color: var(--b-muted); } .swatch dd { margin: 0; }
+
+/* --- Type specimen -------------------------------------------------------- */
+.specimen { border-top: 1px solid var(--b-line); padding: var(--s-4) 0;
+            display: grid; grid-template-columns: 8.5rem 1fr; gap: var(--s-4); align-items: baseline; }
+.specimen .label { font-family: ui-monospace, Consolas, monospace; font-size: 11.5px; color: var(--b-muted); line-height: 1.5; }
+.specimen .label b { display: block; color: var(--b-ink); font-family: inherit; font-size: 13px; }
+
+/* --- Favicon strip. Use REAL rasterised PNGs, never CSS-scaled SVG. ------- */
+.strip { background: var(--b-surface); border: 1px solid var(--b-line); border-radius: var(--r-lg);
+         padding: var(--s-5); display: flex; gap: var(--s-6); flex-wrap: wrap; }
+.strip .col  { display: flex; flex-direction: column; align-items: center; gap: var(--s-2); }
+.strip .row  { display: flex; gap: var(--s-4); align-items: flex-end; background: #fff; padding: var(--s-3); border-radius: var(--r-md); }
+.strip .row div { display: flex; flex-direction: column; align-items: center; gap: var(--s-1); }
+.strip span  { font-size: 10px; color: #888; font-family: ui-monospace, monospace; }
+.strip .lbl  { font-size: 12px; color: var(--b-muted); }
+
+/* --- Tables --------------------------------------------------------------- */
+.tbl { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+.tbl th { text-align: left; font-family: ui-monospace, Consolas, monospace; font-size: 11px;
+          text-transform: uppercase; letter-spacing: .1em; color: var(--b-muted);
+          padding: var(--s-2) var(--s-3); border-bottom: 2px solid var(--b-ink); }
+.tbl td { padding: var(--s-3); border-bottom: 1px solid var(--b-line); vertical-align: top; }
+[dir="rtl"] .tbl th { text-align: right; }
+
+/* --- Controls and the pick footer ---------------------------------------- */
+button, .btn {
+  font: inherit; font-size: 13px; padding: 7px 14px; border-radius: 7px; cursor: pointer;
+  background: transparent; color: var(--b-ink); border: 1px solid var(--b-line);
+}
+button:hover, .btn:hover { border-color: var(--b-accent); color: var(--b-accent); }
+.card.on button.pick, button.pick.on { background: var(--b-accent); color: #fff; border-color: var(--b-accent); }
+button.warn { border-color: var(--warn); color: var(--warn); font-weight: 600; }
+:focus-visible { outline: 2px solid var(--b-accent); outline-offset: 2px; }
+
+.foot { position: fixed; left: 0; right: 0; bottom: 0; background: var(--b-surface);
+        border-top: 1px solid var(--b-line); padding: 10px var(--s-5); font-size: 13px; }
+.foot .in { max-width: var(--page); margin: 0 auto; display: flex; gap: var(--s-4); align-items: center; }
+#status { color: var(--b-muted); } #status b { color: var(--b-accent); }
+.saved { color: var(--ok); font-weight: 600; }
+
+/* --- Gate note ------------------------------------------------------------ */
+.gate { border-left: 3px solid var(--b-accent); padding: var(--s-2) 0 var(--s-2) var(--s-4);
+        margin: var(--s-4) 0 var(--s-6); color: var(--b-muted); font-size: 13.5px; max-width: var(--measure); }
+.gate b { color: var(--b-ink); }

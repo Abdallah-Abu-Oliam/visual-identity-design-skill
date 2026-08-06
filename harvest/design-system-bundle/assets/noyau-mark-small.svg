@@ -1,0 +1,25 @@
+<svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" color="#1A1A1A">
+  <title>Noyau — reduced mark for small sizes (favicon, app icon, below ~32px).</title>
+
+  <!--
+    Reduced variant of the primary mark. Use below roughly 32px.
+    Wheat wreath and the two smaller blossoms are removed — at favicon scale
+    they turn to grey fuzz and cost legibility rather than adding meaning.
+    Tower and one blossom remain, scaled up to fill the frame.
+    Blossom centre is left solid here: at 16px a knocked-out centre is under
+    one pixel across and only muddies the silhouette.
+    Same single-colour system as the primary — change `color` on the <svg>.
+  -->
+
+  <g id="mark" fill="currentColor" transform="translate(-83.5 -119.2) scale(1.326)">
+    <g id="blossom">
+      <circle cx="256" cy="127" r="19"/>
+      <circle cx="276" cy="142" r="19"/>
+      <circle cx="268" cy="165" r="19"/>
+      <circle cx="244" cy="165" r="19"/>
+      <circle cx="236" cy="142" r="19"/>
+    </g>
+    <path id="tower" d="M136 428c16-86 50-124 60-176 6-32-10-52-22-66h164c-12 14-28 34-22 66 10 52 44 90 60 176z"/>
+    <rect id="base" x="112" y="424" width="288" height="34" rx="17"/>
+  </g>
+</svg>

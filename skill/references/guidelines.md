@@ -166,6 +166,26 @@ people to ignore it.
 
 ---
 
+## Pre-delivery checklist
+
+Run all five. The last two were found by shipping a real bundle and getting them wrong.
+
+1. **Placeholder sweep** — TBC, lorem, `#000000` standing in for a real value, empty
+   sections.
+2. **Bilingual cross-check** — every rule verified to say the same thing in both languages.
+3. **Contrast and colour blindness** — `scripts/palette.py`. Neither failure it catches is
+   findable by looking.
+4. **No named font without a source.** A token like `--font-mono: "Some Font"` that the
+   page cannot actually load makes the design system report a missing brand font, and the
+   deliverable arrives looking broken. **Use generic families unless the face genuinely
+   loads** — `ui-monospace, Consolas, monospace`, not a specific name you have not embedded.
+5. **The book must obey its own rules.** On one delivery the cover laid the mark and body
+   copy straight onto the pattern — breaking two rules the book itself sets out inside.
+   **Check the cover and every divider against the guideline's own pages.** A book that
+   contradicts itself on page one teaches the reader to ignore all of it.
+
+---
+
 ## Delivery
 
 Built as a Claude Design project — see `design-delivery.md`. It stays consumable: another
