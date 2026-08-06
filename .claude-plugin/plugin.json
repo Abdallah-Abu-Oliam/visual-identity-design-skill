@@ -1,0 +1,25 @@
+{
+  "name": "visual-identity",
+  "version": "1.0.0",
+  "description": "Turn a project into a brand and derive its visual identity from that. Strategy first, visuals second, every decision traceable back to the brief.",
+  "author": {
+    "name": "Abdalla Abo Olaim",
+    "email": "momabdalla66@gmail.com"
+  },
+  "homepage": "https://github.com/Abdallah-Abu-Oliam/visual-identity-design-skill",
+  "repository": "https://github.com/Abdallah-Abu-Oliam/visual-identity-design-skill",
+  "license": "MIT",
+  "keywords": [
+    "brand",
+    "brand-identity",
+    "visual-identity",
+    "logo",
+    "brand-guidelines",
+    "design-system",
+    "colour-palette",
+    "typography",
+    "art-direction",
+    "bilingual",
+    "arabic"
+  ]
+}

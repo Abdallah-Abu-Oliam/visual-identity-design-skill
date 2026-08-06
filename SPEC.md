@@ -1,4 +1,8 @@
-# Brand & Visual Identity Skill — Working Spec
+# Working Spec — the method, as it was worked out
+
+> This is the design notebook, not the skill. The shipped skill is in
+> `skills/visual-identity/`. Kept because the reasoning behind each rule is here,
+> and several rules only make sense with it.
 
 Status: in progress. Built collaboratively, phase by phase.
 
@@ -29,7 +33,7 @@ visual decisions. Voice, tone, messaging, and customer experience are out of sco
 Seven elements. Facts the project owner already has.
 
 Full method — meaning, processing, and the right question for each — in
-`skill/references/brief.md`.
+`skills/visual-identity/references/brief.md`.
 
 | # | Element | Processes into | The question |
 |---|---------|----------------|--------------|

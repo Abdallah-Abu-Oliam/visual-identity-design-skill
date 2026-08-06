@@ -7,7 +7,7 @@ those licences require.
 
 ## logo-designer-skill
 
-`skill/scripts/export.sh` is derived from the logo-designer-skill project and **has been
+`skills/visual-identity/scripts/export.sh` is derived from the logo-designer-skill project and **has been
 modified**. The changes are listed in the file's own header; in summary:
 
 1. Fixed an aspect-ratio inconsistency — the `sharp` path scaled to a square canvas while
@@ -19,7 +19,7 @@ modified**. The changes are listed in the file's own header; in summary:
 
 Source: https://github.com/neonwatty/logo-designer-skill
 
-The SVG generation approach described in `skill/references/logo-generation.md` is also
+The SVG generation approach described in `skills/visual-identity/references/logo-generation.md` is also
 adapted from that project. Its interview phase was deliberately not adopted; the
 reasoning is recorded in that file.
 
@@ -55,5 +55,5 @@ SOFTWARE.
 Saudi Founding Day. They are third-party copyrighted works kept for study only. They are
 **not** redistributed as part of this skill and must be excluded from any package.
 
-Brand logos shown in `skill/assets/photos/` are trademarks of their respective owners,
+Brand logos shown in `skills/visual-identity/assets/photos/` are trademarks of their respective owners,
 reproduced as illustrative examples of logo types.
