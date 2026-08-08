@@ -9,8 +9,7 @@ rewrites them at full cost.
 ## Install
 
 ```bash
-python -m pip install Pillow numpy shapely
-npm install sharp
+npm install sharp && python -m pip install Pillow numpy shapely
 ```
 
 **Use `python -m pip`, not `pip`.** On at least one machine they resolved to different

@@ -19,7 +19,7 @@ brief → mood board & art direction → logo → colour → type → pattern �
 ## Install
 
 ```bash
-claude plugin add Abdallah-Abu-Oliam/visual-identity-design-skill
+npx skills add Abdallah-Abu-Oliam/visual-identity-design-skill
 ```
 
 Then just say what you want:
@@ -27,11 +27,12 @@ Then just say what you want:
 > *"I want to build a brand for my knife shop"* · *"design a visual identity"* ·
 > *"make brand guidelines"* · *"help me name my startup"*
 
-Optional, for logo rasterising and the palette audit:
+**Optional helper tools.** The skill runs without these, but they power a few steps —
+`sharp` rasterises the logo for the real 16px check, and the Python libraries drive the
+palette audit, contact sheets, mockup compositing and pattern tiles. One line:
 
 ```bash
-npm install sharp
-python -m pip install Pillow numpy shapely
+npm install sharp && python -m pip install Pillow numpy shapely
 ```
 
 ---
